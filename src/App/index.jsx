@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { Route } from 'react-router-dom';
+import { fetchPictureOfDay } from '../apiCalls';
 import Header from '../Header';
 import Discover from '../Discover';
 import Saved from '../Saved';
@@ -9,12 +10,13 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-
+      pictures: [],
     }
   }
 
   componentDidMount() {
-
+    fetchPictureOfDay()
+    .then(data => console.log(data))
   }
 
   render() {

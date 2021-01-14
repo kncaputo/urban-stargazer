@@ -5,7 +5,7 @@ const Discover = () => {
   return(
     <section>
       <h1>Discover Space</h1>
-      <img src='../assets/dark-matter.jpg' />
+      <img src='src/assets/dark-matter.jpg' alt='dark-matter' />
     </section>
   ) 
 }
