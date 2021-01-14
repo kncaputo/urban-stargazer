@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Route, NavLink } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Header from '../Header';
 import Discover from '../Discover';
+import Saved from '../Saved';
 import './App.scss';
 
 class App extends Component {
@@ -20,8 +21,11 @@ class App extends Component {
     return(
       <main>
         <Header />
-        <Route path='/'>
+        <Route exact path='/'>
           <Discover />
+        </Route>
+        <Route exact path='/saved'>
+          <Saved />
         </Route>
       </main>
     )
