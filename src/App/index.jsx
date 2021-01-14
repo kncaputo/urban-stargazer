@@ -1,5 +1,8 @@
+import React, { Component } from 'react';
+import { Route, NavLink } from 'react-router-dom';
+import Header from '../Header';
+import Discover from '../Discover';
 import './App.scss';
-console.log(process.env)
 
 class App extends Component {
   constructor() {
@@ -17,7 +20,9 @@ class App extends Component {
     return(
       <main>
         <Header />
-
+        <Route path='/'>
+          <Discover />
+        </Route>
       </main>
     )
   }
