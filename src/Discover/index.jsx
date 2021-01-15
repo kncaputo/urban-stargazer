@@ -2,7 +2,7 @@ import React, { useEffect, useState, useParams } from 'react';
 import { fetchPicturePicturesFromRange, fetchPictureFromDate } from '../apiCalls';
 import './Discover.scss';
 
-const Discover = () => {
+const Discover = (props) => {
   const [image, setImage] = useState({});
 
   useEffect(() => {
@@ -40,13 +40,6 @@ const Discover = () => {
     generateRandomImage();
   }
 
-  const saveToStorage = () => {
-    let stringifiedImage = JSON.stringify(image);
-    let ImageId = Date.now();
-
-    localStorage.setItem(ImageId, stringifiedImage);
-  }
-
   return(
     <section>
       <header>
@@ -57,7 +50,7 @@ const Discover = () => {
         <h2>{`${image.title}`}</h2>
         <p>{`${image.explanation}`}</p>
         <button onClick={() => {handleDiscoverClick()}}>Discover Again</button>
-        <button onClick={() => {saveToStorage()}}>Save Image</button>
+        <button onClick={() => {props.saveImage(image.date)}}>Save Image</button>
       </main>
     </section>
   ) 
