@@ -6,7 +6,7 @@ const Header = () => {
     <header>
       <h1>Urban Stargazer</h1>
       <nav>
-        <Link to='/'>
+        <Link to='/discover'>
           Discover
         </Link>
         <NavLink to='saved'>

@@ -1,31 +1,21 @@
 import React, { Component, useEffect } from 'react';
 import { Route } from 'react-router-dom';
-import { fetchPictureOfDay } from '../apiCalls';
+import { fetchPicturePicturesFromRange } from '../apiCalls';
+import Home from '../Home';
 import Header from '../Header';
 import Discover from '../Discover';
 import Saved from '../Saved';
 import './App.scss';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      pictures: [],
-    }
-  }
 
-  componentDidMount() {
-    fetchPictureOfDay()
-    .then(data => console.log(data))
-  }
 
   render() {
     return(
       <main>
         <Header />
-        <Route exact path='/'>
-          <Discover />
-        </Route>
+        <Route exact path='/home' component={Home} />
+        <Route exact path='/discover/:id?' component={Discover} />
         <Route exact path='/saved'>
           <Saved />
         </Route>
@@ -36,3 +26,7 @@ class App extends Component {
 }
 
 export default App;
+
+
+// render page showing today's image
+// on click show random image
