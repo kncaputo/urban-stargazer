@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, useParams } from 'react-router-dom';
-import { fetchPicturePicturesFromRange } from '../apiCalls';
+import { Route } from 'react-router-dom';
 import Home from '../Home';
 import Header from '../Header';
 import Discover from '../Discover';
@@ -10,8 +9,8 @@ import './App.scss';
 const App = () => {
   const [savedImages, setSavedImages] = useState([])
 
-  const saveImage = (imageId) => {
-    setSavedImages([...savedImages, imageId]);
+  const saveImage = (imageDate) => {
+    setSavedImages([...savedImages, imageDate]);
   }
 
   useEffect(() => {
@@ -22,15 +21,15 @@ const App = () => {
   }, [])
 
   const retrieveFromStorage = () => {
-    const retrievedIds = localStorage.getItem('savedImageDates')
-    const imageIds = JSON.parse(retrievedIds)
-    setSavedImages([...savedImages, imageIds]);
+    const retrievedDates = localStorage.getItem('savedImageDates')
+    const imageDates = JSON.parse(retrievedDates)
+    setSavedImages([...savedImages, imageDates]);
   }
 
-  const saveToStorage = (imageId) => {
+  const saveToStorage = (imageDates) => {
     localStorage.clear();
-    let stringifiedImageId = JSON.stringify(imageId);
-    localStorage.setItem('savedImageDates', stringifiedImageId);
+    let stringifiedImageDates = JSON.stringify(imageDates);
+    localStorage.setItem('savedImageDates', stringifiedImageDates);
   }
 
 
@@ -45,7 +44,7 @@ const App = () => {
       </Route>  
       <Route exact path='/saved'>
         <Saved 
-          savedImageIds={savedImages}
+          savedImageDates={savedImages}
         />
       </Route>
     </main>
