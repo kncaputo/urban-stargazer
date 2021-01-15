@@ -13,7 +13,7 @@ const App = () => {
     <main>
       <Header />
       <Route exact path='/home' component={Home} />
-      <Route exact path='/discover/:date?' component={Discover} />
+      <Route exact path='/discover' component={Discover} />
       <Route exact path='/saved'>
         <Saved />
       </Route>
@@ -22,7 +22,3 @@ const App = () => {
 }
 
 export default App;
-
-
-// render page showing today's image
-// on click show random image

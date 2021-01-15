@@ -36,8 +36,14 @@ const Discover = () => {
     return value;
   }
 
-  const handleClick = () => {
+  const handleDiscoverClick = () => {
     generateRandomImage();
+  }
+
+  const saveToStorage = () => {
+    let stringifiedImage = JSON.stringify(image);
+    let ImageId = Date.now();
+    localStorage.setItem(savedImagesId, stringifiedImage)
   }
 
   return(
@@ -49,7 +55,8 @@ const Discover = () => {
         <img src={`${image.url}`} />
         <h2>{`${image.title}`}</h2>
         <p>{`${image.explanation}`}</p>
-        <button onClick={() => {handleClick()}}>Discover Again</button>
+        <button onClick={() => {handleDiscoverClick()}}>Discover Again</button>
+        {/* <button onClick={() => {saveToStorage()}}>Save Image</button> */}
       </main>
     </section>
   ) 
