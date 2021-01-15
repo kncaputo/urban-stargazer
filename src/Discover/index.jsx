@@ -6,15 +6,23 @@ const Discover = () => {
   const [image, setImage] = useState({});
 
   useEffect(() => {
-    fetchPictureFromDate('2020-12-01')
+    generateRandomImage();
+  }, []);
+
+  const generateRandomImage = () => {
+    const date = generateRandomDate();
+
+    fetchPictureFromDate(date)
     .then(image => setImage(image))
     .catch(error => console.log(error))
-  }, image);
+  }
 
   const generateRandomDate = () => {
     const year = `20${getRandomValue(28)}`;
     const month = `${getRandomValue(12)}`
     const day = `${getRandomValue(20)}`
+
+    return `${year}-${month}-${day}`;
   }
 
   // date function
@@ -25,13 +33,13 @@ const Discover = () => {
     if (value.length < 2) {
       value = '0' + value;
     }
-    return value
+    return value;
   }
-
 
   const handleClick = () => {
-
+    generateRandomImage();
   }
+
   return(
     <section>
       <header>
