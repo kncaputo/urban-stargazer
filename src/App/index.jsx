@@ -1,5 +1,5 @@
-import React, { Component, useEffect } from 'react';
-import { Route } from 'react-router-dom';
+import React from 'react';
+import { Route, useParams } from 'react-router-dom';
 import { fetchPicturePicturesFromRange } from '../apiCalls';
 import Home from '../Home';
 import Header from '../Header';
@@ -13,7 +13,7 @@ const App = () => {
     <main>
       <Header />
       <Route exact path='/home' component={Home} />
-      <Route exact path='/discover/:id?' component={Discover} />
+      <Route exact path='/discover/:date?' component={Discover} />
       <Route exact path='/saved'>
         <Saved />
       </Route>

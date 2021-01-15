@@ -9,8 +9,29 @@ const Discover = () => {
     fetchPictureFromDate('2020-12-01')
     .then(image => setImage(image))
     .catch(error => console.log(error))
-  }, image)
+  }, image);
 
+  const generateRandomDate = () => {
+    const year = `20${getRandomValue(28)}`;
+    const month = `${getRandomValue(12)}`
+    const day = `${getRandomValue(20)}`
+  }
+
+  // date function
+  const getRandomValue = (multiple) => {
+    let value = Math.floor((Math.random() *  multiple) + 1)
+    value = value.toString();
+
+    if (value.length < 2) {
+      value = '0' + value;
+    }
+    return value
+  }
+
+
+  const handleClick = () => {
+
+  }
   return(
     <section>
       <header>
@@ -20,7 +41,7 @@ const Discover = () => {
         <img src={`${image.url}`} />
         <h2>{`${image.title}`}</h2>
         <p>{`${image.explanation}`}</p>
-        {/* <button onClick={}>Discover Again</button> */}
+        <button onClick={() => {handleClick()}}>Discover Again</button>
       </main>
     </section>
   ) 
