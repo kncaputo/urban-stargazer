@@ -43,7 +43,8 @@ const Discover = () => {
   const saveToStorage = () => {
     let stringifiedImage = JSON.stringify(image);
     let ImageId = Date.now();
-    localStorage.setItem(savedImagesId, stringifiedImage)
+
+    localStorage.setItem(ImageId, stringifiedImage);
   }
 
   return(
@@ -56,7 +57,7 @@ const Discover = () => {
         <h2>{`${image.title}`}</h2>
         <p>{`${image.explanation}`}</p>
         <button onClick={() => {handleDiscoverClick()}}>Discover Again</button>
-        {/* <button onClick={() => {saveToStorage()}}>Save Image</button> */}
+        <button onClick={() => {saveToStorage()}}>Save Image</button>
       </main>
     </section>
   ) 
