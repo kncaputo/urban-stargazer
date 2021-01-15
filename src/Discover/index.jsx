@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useParams } from 'react';
 import { fetchPicturePicturesFromRange, fetchPictureFromDate } from '../apiCalls';
 import './Discover.scss';
 
@@ -13,10 +13,15 @@ const Discover = () => {
 
   return(
     <section>
-      <h1>Discover Space</h1>
-      <img src={`${image.url}`} />
-      <h2>{`${image.title}`}</h2>
-      {/* <button onClick={}>Discover Again</button> */}
+      <header>
+        <h1>Discover Space</h1>
+      </header>
+      <main>
+        <img src={`${image.url}`} />
+        <h2>{`${image.title}`}</h2>
+        <p>{`${image.explanation}`}</p>
+        {/* <button onClick={}>Discover Again</button> */}
+      </main>
     </section>
   ) 
 }

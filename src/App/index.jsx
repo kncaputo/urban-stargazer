@@ -7,22 +7,18 @@ import Discover from '../Discover';
 import Saved from '../Saved';
 import './App.scss';
 
-class App extends Component {
+const App = () => {
 
-
-  render() {
-    return(
-      <main>
-        <Header />
-        <Route exact path='/home' component={Home} />
-        <Route exact path='/discover/:id?' component={Discover} />
-        <Route exact path='/saved'>
-          <Saved />
-        </Route>
-      </main>
-    )
-  }
-
+  return(
+    <main>
+      <Header />
+      <Route exact path='/home' component={Home} />
+      <Route exact path='/discover/:id?' component={Discover} />
+      <Route exact path='/saved'>
+        <Saved />
+      </Route>
+    </main>
+  )
 }
 
 export default App;
