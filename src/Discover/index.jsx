@@ -18,9 +18,9 @@ const Discover = () => {
   }
 
   const generateRandomDate = () => {
-    const year = `20${getRandomValue(28)}`;
+    const year = `20${getRandomValue(20)}`;
     const month = `${getRandomValue(12)}`
-    const day = `${getRandomValue(20)}`
+    const day = `${getRandomValue(28)}`
 
     return `${year}-${month}-${day}`;
   }
