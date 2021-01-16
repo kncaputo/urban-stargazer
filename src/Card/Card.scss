@@ -1,5 +1,14 @@
-.main {
+.card {
+  max-height: 10em;
+  margin: .5em;
+}
 
+.card:hover {
+  cursor: pointer;
+}
+
+.card-image {
+  max-height: 9em;
 }
 
 .img {

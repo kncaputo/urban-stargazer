@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchPictureFromDate } from '../apiCalls';
 import Card from '../Card';
+import { saveToLocalStorage } from '../utilities';
 import './Saved.scss';
 
 const Saved = (props) => {
@@ -9,29 +10,38 @@ const Saved = (props) => {
   useEffect(() => {
     const retrievedImages = localStorage.getItem('savedImages')
     let images = JSON.parse(retrievedImages)
-    setSavedImages([...savedImages, images])
+    setSavedImages(images)
   }, [])
 
-  const createCards = () => {
-    let images = savedImages;
-    console.log("images", images)
-
-    return images.map(image => {
-      console.log("image", image)
-      return (
-        <Card 
-        key={image.date}
-        src={`${image}`}
-      />  
-      )
+  const deleteSavedImage = (date) => {
+    const newSavedImages = savedImages.filter(savedImage => {
+      return savedImage.date !== date
     })
+
+    saveToLocalStorage(newSavedImages);
+    setSavedImages(newSavedImages);
+  }
+
+  const createCards = () => {
+    if (savedImages !== null) {
+      return savedImages.map(image => {
+        const { url, title, date } = image;
+        return (
+          <Card 
+          key={date}
+          src={`${url}`}
+          title={title}
+          date={date}
+          deleteSavedImage={deleteSavedImage}
+        />  
+        )
+      })
+    }
   }
 
   return(
-    <main>
-      <section>
-        {createCards()}
-      </section>
+    <main id='card-box'>
+      {createCards()}
     </main>
   )
 }

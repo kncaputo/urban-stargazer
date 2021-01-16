@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useParams } from 'react';
 import { fetchPicturePicturesFromRange, fetchPictureFromDate } from '../apiCalls';
 import { EmailShareButton, FacebookShareButton, TwitterShareButton } from "react-share";
+import { saveToLocalStorage, filterData } from '../utilities';
 import './Discover.scss';
 
 const Discover = (props) => {
@@ -14,7 +15,10 @@ const Discover = (props) => {
     const date = generateRandomDate();
 
     fetchPictureFromDate(date)
-    .then(image => setImage(image))
+    .then(data => {
+      const image = filterData(data);
+      setImage(image);
+    })
     .catch(error => console.log(error))
   }
 
@@ -41,18 +45,38 @@ const Discover = (props) => {
     generateRandomImage();
   }
 
-  const saveToStorage = (image) => {
-    let imagesToSave = [];
+  const retrieveFromLocalStorage = () => {
     const retrievedImages = localStorage.getItem('savedImages')
-    const images = JSON.parse(retrievedImages)
+    return JSON.parse(retrievedImages)
+  }
+
+  const handleToggleSave = () => {
+    image.isSaved === false ? saveImage() : removeFromSaved();
+  }
+
+  const saveImage = () => {
+    let imagesToSave = [];
+    
+    const images = retrieveFromLocalStorage();
     if (images) {
       imagesToSave.push(images) 
     }
     imagesToSave.push(image)
+    imagesToSave = imagesToSave.flat();
 
-    localStorage.clear();
-    let stringifiedImages = JSON.stringify(imagesToSave.flat());
-    localStorage.setItem('savedImages', stringifiedImages);
+    saveToLocalStorage(imagesToSave);
+    setImage({ ...image, isSaved: true });
+  }
+
+  const removeFromSaved = () => {
+    const { date } = image;
+    const images = retrieveFromLocalStorage();
+
+    const newSavedImages = images.filter(savedImage => {
+      return savedImage.date !== date;
+    })
+    saveToLocalStorage(newSavedImages);
+    setImage({ ...image, isSaved: false });
   }
 
   const share = () => {
@@ -60,7 +84,7 @@ const Discover = (props) => {
   }
 
   return(
-    <main>
+    <main id='discover-main'>
       <section id='image-box'>
         <img src={`${image.url}`} id='image' />
       </section>
@@ -76,7 +100,10 @@ const Discover = (props) => {
           round={true}
           iconFillColor='white' /> */}
         <button className='media-buttons' onClick={() => {share()}}>Share</button>
-        <button className='media-buttons' onClick={() => {saveToStorage(image)}}>Save Image</button>
+        {image.isSaved === false ?
+          <button className='media-buttons' onClick={() => {handleToggleSave()}}>Save Image</button> :
+          <button className='media-buttons' onClick={() => {handleToggleSave()}}>Remove From Saved</button>
+        }
       </section>
 
 
