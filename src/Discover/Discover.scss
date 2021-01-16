@@ -7,3 +7,13 @@ main {
 image-box {
   display: flex;
 }
+
+button {
+  padding: 5px;
+  margin: 3em 2em 7em 0;
+}
+
+button-box {
+  display: flex;
+  justify-content: space-between;
+}

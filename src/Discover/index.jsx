@@ -54,6 +54,10 @@ const Discover = (props) => {
     localStorage.setItem('savedImages', stringifiedImages);
   }
 
+  const share = () => {
+
+  }
+
   return(
     <section>
       <header>
@@ -65,8 +69,11 @@ const Discover = (props) => {
         </section>
         <h2>{`${image.title}`}</h2>
         <p>{`${image.explanation}`}</p>
-        <button onClick={() => {handleDiscoverClick()}}>Discover Again</button>
-        <button onClick={() => {saveToStorage(image)}}>Save Image</button>
+        <section className='button-box'>
+          <button onClick={() => {share()}}>Share</button>
+          <button onClick={() => {saveToStorage(image)}}>Save Image</button>
+          <button onClick={() => {handleDiscoverClick()}}>Discover Again</button>
+        </section>
       </main>
     </section>
   ) 
