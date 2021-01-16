@@ -25,10 +25,8 @@ const Saved = (props) => {
   }
 
   return(
-    <main>
-      <section>
-        {createCards()}
-      </section>
+    <main id='card-box'>
+      {createCards()}
     </main>
   )
 }

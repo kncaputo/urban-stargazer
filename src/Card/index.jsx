@@ -3,11 +3,10 @@ import './Card.scss';
 
 const Card = (props) => {
   const { url, title } = props;
-  console.log(url)
-  console.log(props)
+ 
   return (
-    <section className='main' key={title}>
-      <img src={`${props.src}`} alt={title} />
+    <section className='card' key={title}>
+      <img className='card-image' src={`${props.src}`} alt={title} />
     </section>
   )
 }

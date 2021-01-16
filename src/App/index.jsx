@@ -9,7 +9,7 @@ import './App.scss';
 const App = () => {
 
   return(
-    <main>
+    <main id='app-main'>
       <Header />
       <Route exact path='/home' component={Home} />
       <Route exact path='/discover' component={Discover} /> 

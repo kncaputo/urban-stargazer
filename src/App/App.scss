@@ -2,9 +2,10 @@ body {
   height: 100%;
 }
 
-main {
+#app-main {
   background-color: black;
   color: white;
+  height: 100vh;
 }
 
 button:hover {
