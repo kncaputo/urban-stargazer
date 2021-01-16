@@ -73,7 +73,6 @@ const Discover = (props) => {
     const newSavedImages = images.filter(savedImage => {
       return savedImage.date !== date;
     })
-    
     saveToLocalStorage(newSavedImages);
     setIsSaved(false);
   }
@@ -99,7 +98,10 @@ const Discover = (props) => {
           round={true}
           iconFillColor='white' /> */}
         <button className='media-buttons' onClick={() => {share()}}>Share</button>
-        <button className='media-buttons' onClick={() => {handleToggleSave()}}>Save Image</button>
+        {isSaved === false ?
+          <button className='media-buttons' onClick={() => {handleToggleSave()}}>Save Image</button> :
+          <button className='media-buttons' onClick={() => {handleToggleSave()}}>Remove From Saved</button>
+        }
       </section>
 
 
