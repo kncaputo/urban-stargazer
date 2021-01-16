@@ -4,31 +4,33 @@ import Card from '../Card';
 import './Saved.scss';
 
 const Saved = (props) => {
-  // const [savedImages, setSavedImages] = useState([]);
+  const [savedImages, setSavedImages] = useState([]);
 
-  // useEffect(() => {
-  //   props.savedImageDates.map(date => {
-  //     fetchPictureFromDate(date)
-  //     .then(image => setSavedImages([...savedImages, image]))
-  //     .catch(error => console.log(error))
-  //   })  
-  // }, [])
+  useEffect(() => {
+    const retrievedImages = localStorage.getItem('savedImages')
+    let images = JSON.parse(retrievedImages)
+    setSavedImages([...savedImages, images])
+  }, [])
 
-  // const createCards = () => {
-  //   savedImages.map(image => {
-  //     console.log(image)
-  //     return (
-  //       <Card 
-  //       src={image.url}
-  //     />  
-  //     )
-  //   })
-  // }
+  const createCards = () => {
+    let images = savedImages;
+    console.log("images", images)
+
+    return images.map(image => {
+      console.log("image", image)
+      return (
+        <Card 
+        key={image.date}
+        src={`${image}`}
+      />  
+      )
+    })
+  }
 
   return(
     <main>
       <section>
-        {/* {createCards()} */}
+        {createCards()}
       </section>
     </main>
   )

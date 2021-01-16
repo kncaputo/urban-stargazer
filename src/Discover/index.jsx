@@ -60,7 +60,9 @@ const Discover = (props) => {
         <h1>Discover Space</h1>
       </header>
       <main>
-        <img src={`${image.url}`} />
+        <section>
+          <img src={`${image.url}`} />
+        </section>
         <h2>{`${image.title}`}</h2>
         <p>{`${image.explanation}`}</p>
         <button onClick={() => {handleDiscoverClick()}}>Discover Again</button>
