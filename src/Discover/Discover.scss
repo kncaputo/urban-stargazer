@@ -1,0 +1,44 @@
+@import 'src/sass/_mixins.scss';
+
+main {
+  @include center-column;
+}
+
+#image-box {
+  display: flex;
+}
+
+#image {
+  max-height: 85vh;
+}
+
+#image-title {
+  margin-top: .15em;
+}
+
+button {
+  // padding: 1em;
+  // margin: 2em .5em 1em .5em;
+}
+
+.media-buttons {
+  margin: .25em;
+
+}
+
+#button-box {
+  display: flex;
+  flex-direction: flex-end;
+}
+
+// #email-share-button {
+//   color: white;
+// }
+
+#image-title {
+  font-weight: 300;
+}
+
+#explanation {
+  font-size: small;
+}

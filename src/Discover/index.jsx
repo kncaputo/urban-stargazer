@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useParams } from 'react';
 import { fetchPicturePicturesFromRange, fetchPictureFromDate } from '../apiCalls';
+import { EmailShareButton, FacebookShareButton, TwitterShareButton } from "react-share";
 import './Discover.scss';
 
 const Discover = (props) => {
@@ -54,21 +55,35 @@ const Discover = (props) => {
     localStorage.setItem('savedImages', stringifiedImages);
   }
 
+  const share = () => {
+
+  }
+
   return(
-    <section>
-      <header>
-        <h1>Discover Space</h1>
-      </header>
-      <main>
-        <section>
-          <img src={`${image.url}`} />
-        </section>
-        <h2>{`${image.title}`}</h2>
-        <p>{`${image.explanation}`}</p>
-        <button onClick={() => {handleDiscoverClick()}}>Discover Again</button>
-        <button onClick={() => {saveToStorage(image)}}>Save Image</button>
-      </main>
-    </section>
+    <main>
+      <section id='image-box'>
+        <img src={`${image.url}`} id='image' />
+      </section>
+
+      <h2 id='image-title'>{`${image.title}`}</h2>
+      <button onClick={() => {handleDiscoverClick()}}>Discover Again</button>
+
+      <section id='button-box'>
+        {/* <EmailShareButton 
+          url={image.url} 
+          id='email-share-button'
+          size={32} 
+          round={true}
+          iconFillColor='white' /> */}
+        <button className='media-buttons' onClick={() => {share()}}>Share</button>
+        <button className='media-buttons' onClick={() => {saveToStorage(image)}}>Save Image</button>
+      </section>
+
+
+      <section>
+        <p id='explanation'>{`${image.explanation}`}</p>
+      </section>    
+    </main>
   ) 
 }
 

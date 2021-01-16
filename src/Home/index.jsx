@@ -1,20 +1,16 @@
 import React, { Component, useEffect, useState } from 'react';
+import background from '../assets/hubble-stars.jpg'
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const [todayImage, getTodayImage] = useState({})
-  
-  useEffect = () => {
-    // get today's image on page load
-  } 
 
   return (
-    <section>
-
-    <Link to='/discover'> 
-      <button>Click for random image</button>
-    </Link>  
-    </section>
+    <main id='home-main'>
+      <h1>Welcome to Urban Stargazer</h1>
+      <Link to='/discover'> 
+        <button>Click for random image</button>
+      </Link>  
+    </main>
   )
 }
 
