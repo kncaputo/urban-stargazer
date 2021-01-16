@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useParams } from 'react';
 import { fetchPicturePicturesFromRange, fetchPictureFromDate } from '../apiCalls';
+import { EmailShareButton, FacebookShareButton, TwitterShareButton } from "react-share";
 import './Discover.scss';
 
 const Discover = (props) => {
@@ -59,23 +60,24 @@ const Discover = (props) => {
   }
 
   return(
-    <section>
-      <header>
-        <h1>Discover Space</h1>
-      </header>
-      <main>
-        <section className='image-box'>
-          <img src={`${image.url}`} />
-        </section>
-        <h2>{`${image.title}`}</h2>
-        <p>{`${image.explanation}`}</p>
-        <section className='button-box'>
-          <button onClick={() => {share()}}>Share</button>
-          <button onClick={() => {saveToStorage(image)}}>Save Image</button>
-          <button onClick={() => {handleDiscoverClick()}}>Discover Again</button>
-        </section>
-      </main>
-    </section>
+    <main>
+      <section className='image-box'>
+        <img src={`${image.url}`} />
+      </section>
+      <h2>{`${image.title}`}</h2>
+      <p>{`${image.explanation}`}</p>
+      <section className='button-box'>
+        {/* <EmailShareButton 
+          url={image.url} 
+          id='email-share-button'
+          size={32} 
+          round={true}
+          iconFillColor='white' /> */}
+        <button onClick={() => {share()}}>Share</button>
+        <button onClick={() => {saveToStorage(image)}}>Save Image</button>
+        <button onClick={() => {handleDiscoverClick()}}>Discover Again</button>
+      </section>
+    </main>
   ) 
 }
 
