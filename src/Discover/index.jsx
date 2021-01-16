@@ -6,6 +6,7 @@ import './Discover.scss';
 
 const Discover = (props) => {
   const [image, setImage] = useState({});
+  const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
     generateRandomImage();
@@ -47,7 +48,11 @@ const Discover = (props) => {
     return JSON.parse(retrievedImages)
   }
 
-  const saveImage = (image) => {
+  const handleToggleSave = () => {
+    isSaved === false ? saveImage() : removeFromSaved();
+  }
+
+  const saveImage = () => {
     let imagesToSave = [];
     
     const images = retrieveFromLocalStorage();
@@ -58,17 +63,19 @@ const Discover = (props) => {
     imagesToSave = imagesToSave.flat();
 
     saveToLocalStorage(imagesToSave);
+    setIsSaved(true);
   }
 
-  const removeFromSaved = (image) => {
+  const removeFromSaved = () => {
     const { date } = image;
     const images = retrieveFromLocalStorage();
-    
+
     const newSavedImages = images.filter(savedImage => {
       return savedImage.date !== date;
     })
-
+    
     saveToLocalStorage(newSavedImages);
+    setIsSaved(false);
   }
 
   const share = () => {
@@ -92,7 +99,7 @@ const Discover = (props) => {
           round={true}
           iconFillColor='white' /> */}
         <button className='media-buttons' onClick={() => {share()}}>Share</button>
-        <button className='media-buttons' onClick={() => {saveImage(image)}}>Save Image</button>
+        <button className='media-buttons' onClick={() => {handleToggleSave()}}>Save Image</button>
       </section>
 
 
