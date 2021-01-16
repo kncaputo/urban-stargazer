@@ -7,7 +7,7 @@ const Card = (props) => {
   console.log(props)
   return (
     <section className='main' key={title}>
-      <img src={`${url}`} alt={title} />
+      <img src={`${props.src}`} alt={title} />
     </section>
   )
 }
