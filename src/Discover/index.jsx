@@ -40,6 +40,20 @@ const Discover = (props) => {
     generateRandomImage();
   }
 
+  const saveToStorage = (image) => {
+    let imagesToSave = [];
+    const retrievedImages = localStorage.getItem('savedImages')
+    const images = JSON.parse(retrievedImages)
+    if (images) {
+      imagesToSave.push(images) 
+    }
+    imagesToSave.push(image)
+
+    localStorage.clear();
+    let stringifiedImages = JSON.stringify(imagesToSave.flat());
+    localStorage.setItem('savedImages', stringifiedImages);
+  }
+
   return(
     <section>
       <header>
@@ -50,7 +64,7 @@ const Discover = (props) => {
         <h2>{`${image.title}`}</h2>
         <p>{`${image.explanation}`}</p>
         <button onClick={() => {handleDiscoverClick()}}>Discover Again</button>
-        <button onClick={() => {props.saveImage(image.date)}}>Save Image</button>
+        <button onClick={() => {saveToStorage(image)}}>Save Image</button>
       </main>
     </section>
   ) 
