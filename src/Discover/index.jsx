@@ -42,11 +42,17 @@ const Discover = (props) => {
     generateRandomImage();
   }
 
-  const saveToStorage = (image) => {
+  const retrieveFromLocalStorage = () => {
+    const retrievedImages = localStorage.getItem('savedImages')
+    return JSON.parse(retrievedImages)
+  }
+
+  const saveImage = (image) => {
     let imagesToSave = [];
     
-    const retrievedImages = localStorage.getItem('savedImages')
-    const images = JSON.parse(retrievedImages)
+    const images = retrieveFromLocalStorage();
+    // const retrievedImages = localStorage.getItem('savedImages')
+    // const images = JSON.parse(retrievedImages)
     if (images) {
       imagesToSave.push(images) 
     }
@@ -54,6 +60,10 @@ const Discover = (props) => {
     imagesToSave = imagesToSave.flat();
 
     saveToLocalStorage(imagesToSave);
+  }
+
+  const removeFromSaved = () => {
+
   }
 
   const share = () => {
@@ -77,7 +87,7 @@ const Discover = (props) => {
           round={true}
           iconFillColor='white' /> */}
         <button className='media-buttons' onClick={() => {share()}}>Share</button>
-        <button className='media-buttons' onClick={() => {saveToStorage(image)}}>Save Image</button>
+        <button className='media-buttons' onClick={() => {saveImage(image)}}>Save Image</button>
       </section>
 
 
