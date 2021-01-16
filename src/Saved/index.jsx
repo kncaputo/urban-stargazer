@@ -13,13 +13,14 @@ const Saved = (props) => {
   }, [])
 
   const deleteSavedImage = (date) => {
-  //   const newSavedImages = savedImages.map(savedImage => {
-  //     return savedImage.date !== date
-  //   })
+    const newSavedImages = savedImages.filter(savedImage => {
+      return savedImage.date !== date
+    })
+    localStorage.clear();
+    let stringifiedImages = JSON.stringify(newSavedImages);
+    localStorage.setItem('savedImages', stringifiedImages);
     
-  //   localStorage.clear();
-  //   let stringifiedImages = JSON.stringify(newSavedImages);
-  //   localStorage.setItem('savedImages', stringifiedImages);
+    setSavedImages(newSavedImages);
   }
 
   const createCards = () => {
