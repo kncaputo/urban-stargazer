@@ -60,7 +60,7 @@ const Discover = (props) => {
         <h1>Discover Space</h1>
       </header>
       <main>
-        <section>
+        <section className='image-box'>
           <img src={`${image.url}`} />
         </section>
         <h2>{`${image.title}`}</h2>

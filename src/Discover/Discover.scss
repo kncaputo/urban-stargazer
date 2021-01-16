@@ -1,0 +1,9 @@
+@import 'src/sass/_mixins.scss';
+
+main {
+  @include center-column;
+}
+
+image-box {
+  display: flex;
+}
