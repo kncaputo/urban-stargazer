@@ -64,8 +64,8 @@ const Discover = (props) => {
       <section className='image-box'>
         <img src={`${image.url}`} />
       </section>
-      <h2>{`${image.title}`}</h2>
-      <p>{`${image.explanation}`}</p>
+      <h2 id='image-title'>{`${image.title}`}</h2>
+
       <section className='button-box'>
         {/* <EmailShareButton 
           url={image.url} 
@@ -77,6 +77,10 @@ const Discover = (props) => {
         <button onClick={() => {saveToStorage(image)}}>Save Image</button>
         <button onClick={() => {handleDiscoverClick()}}>Discover Again</button>
       </section>
+
+      <section>
+        <p id='explanation'>{`${image.explanation}`}</p>
+      </section>    
     </main>
   ) 
 }

@@ -9,15 +9,23 @@ image-box {
 }
 
 button {
-  padding: 5px;
-  margin: 3em 2em 7em 0;
+  padding: 1em;
+  margin: 2em .5em 1em .5em;
 }
 
 button-box {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 // #email-share-button {
 //   color: white;
 // }
+
+#image-title {
+  font-weight: 300;
+}
+
+#explanation {
+  font-size: small;
+}
