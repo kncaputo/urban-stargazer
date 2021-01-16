@@ -12,16 +12,31 @@ const Saved = (props) => {
     setSavedImages(images)
   }, [])
 
+  const deleteSavedImage = (date) => {
+  //   const newSavedImages = savedImages.map(savedImage => {
+  //     return savedImage.date !== date
+  //   })
+    
+  //   localStorage.clear();
+  //   let stringifiedImages = JSON.stringify(newSavedImages);
+  //   localStorage.setItem('savedImages', stringifiedImages);
+  }
+
   const createCards = () => {
-  
-    return savedImages.map(image => {
-      return (
-        <Card 
-        key={image.date}
-        src={`${image.url}`}
-      />  
-      )
-    })
+    if (savedImages !== null) {
+      return savedImages.map(image => {
+        const { url, title, date } = image;
+        return (
+          <Card 
+          key={date}
+          src={`${url}`}
+          title={title}
+          date={date}
+          deleteSavedImage={deleteSavedImage}
+        />  
+        )
+      })
+    }
   }
 
   return(

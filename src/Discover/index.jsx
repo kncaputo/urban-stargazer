@@ -43,6 +43,7 @@ const Discover = (props) => {
 
   const saveToStorage = (image) => {
     let imagesToSave = [];
+    
     const retrievedImages = localStorage.getItem('savedImages')
     const images = JSON.parse(retrievedImages)
     if (images) {
@@ -60,7 +61,7 @@ const Discover = (props) => {
   }
 
   return(
-    <main>
+    <main id='discover-main'>
       <section id='image-box'>
         <img src={`${image.url}`} id='image' />
       </section>
