@@ -61,22 +61,26 @@ const Discover = (props) => {
 
   return(
     <main>
-      <section className='image-box'>
-        <img src={`${image.url}`} />
+      <section id='image-box'>
+        <img src={`${image.url}`} id='image' />
       </section>
+
+      <section id='image-footer-box'> 
       <h2 id='image-title'>{`${image.title}`}</h2>
 
-      <section className='button-box'>
-        {/* <EmailShareButton 
-          url={image.url} 
-          id='email-share-button'
-          size={32} 
-          round={true}
-          iconFillColor='white' /> */}
-        <button onClick={() => {share()}}>Share</button>
-        <button onClick={() => {saveToStorage(image)}}>Save Image</button>
-        <button onClick={() => {handleDiscoverClick()}}>Discover Again</button>
+        <section id='button-box'>
+          {/* <EmailShareButton 
+            url={image.url} 
+            id='email-share-button'
+            size={32} 
+            round={true}
+            iconFillColor='white' /> */}
+          <button className='media-buttons' onClick={() => {share()}}>Share</button>
+          <button className='media-buttons' onClick={() => {saveToStorage(image)}}>Save Image</button>
+        </section>
       </section>
+
+      <button onClick={() => {handleDiscoverClick()}}>Discover Again</button>
 
       <section>
         <p id='explanation'>{`${image.explanation}`}</p>
