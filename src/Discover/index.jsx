@@ -51,8 +51,6 @@ const Discover = (props) => {
     let imagesToSave = [];
     
     const images = retrieveFromLocalStorage();
-    // const retrievedImages = localStorage.getItem('savedImages')
-    // const images = JSON.parse(retrievedImages)
     if (images) {
       imagesToSave.push(images) 
     }
@@ -62,8 +60,15 @@ const Discover = (props) => {
     saveToLocalStorage(imagesToSave);
   }
 
-  const removeFromSaved = () => {
+  const removeFromSaved = (image) => {
+    const { date } = image;
+    const images = retrieveFromLocalStorage();
+    
+    const newSavedImages = images.filter(savedImage => {
+      return savedImage.date !== date;
+    })
 
+    saveToLocalStorage(newSavedImages);
   }
 
   const share = () => {
