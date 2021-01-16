@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useParams } from 'react';
 import { fetchPicturePicturesFromRange, fetchPictureFromDate } from '../apiCalls';
 import { EmailShareButton, FacebookShareButton, TwitterShareButton } from "react-share";
+import { saveToLocalStorage } from '../utilities';
 import './Discover.scss';
 
 const Discover = (props) => {
@@ -50,10 +51,9 @@ const Discover = (props) => {
       imagesToSave.push(images) 
     }
     imagesToSave.push(image)
+    imagesToSave = imagesToSave.flat();
 
-    localStorage.clear();
-    let stringifiedImages = JSON.stringify(imagesToSave.flat());
-    localStorage.setItem('savedImages', stringifiedImages);
+    saveToLocalStorage(imagesToSave);
   }
 
   const share = () => {

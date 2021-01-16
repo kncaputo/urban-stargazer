@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchPictureFromDate } from '../apiCalls';
 import Card from '../Card';
+import { saveToLocalStorage } from '../utilities';
 import './Saved.scss';
 
 const Saved = (props) => {
@@ -16,10 +17,8 @@ const Saved = (props) => {
     const newSavedImages = savedImages.filter(savedImage => {
       return savedImage.date !== date
     })
-    localStorage.clear();
-    let stringifiedImages = JSON.stringify(newSavedImages);
-    localStorage.setItem('savedImages', stringifiedImages);
-    
+
+    saveToLocalStorage(newSavedImages);
     setSavedImages(newSavedImages);
   }
 
