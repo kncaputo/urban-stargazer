@@ -9,19 +9,16 @@ const Saved = (props) => {
   useEffect(() => {
     const retrievedImages = localStorage.getItem('savedImages')
     let images = JSON.parse(retrievedImages)
-    setSavedImages([...savedImages, images])
+    setSavedImages(images)
   }, [])
 
   const createCards = () => {
-    let images = savedImages;
-    console.log("images", images)
-
-    return images.map(image => {
-      console.log("image", image)
+  
+    return savedImages.map(image => {
       return (
         <Card 
         key={image.date}
-        src={`${image}`}
+        src={`${image.url}`}
       />  
       )
     })
