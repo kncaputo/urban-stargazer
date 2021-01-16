@@ -1,12 +1,11 @@
 import React, { useEffect, useState, useParams } from 'react';
 import { fetchPicturePicturesFromRange, fetchPictureFromDate } from '../apiCalls';
 import { EmailShareButton, FacebookShareButton, TwitterShareButton } from "react-share";
-import { saveToLocalStorage } from '../utilities';
+import { saveToLocalStorage, filterData } from '../utilities';
 import './Discover.scss';
 
 const Discover = (props) => {
   const [image, setImage] = useState({});
-  const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
     generateRandomImage();
@@ -16,7 +15,10 @@ const Discover = (props) => {
     const date = generateRandomDate();
 
     fetchPictureFromDate(date)
-    .then(image => setImage(image))
+    .then(data => {
+      const image = filterData(data);
+      setImage(image);
+    })
     .catch(error => console.log(error))
   }
 
@@ -49,7 +51,7 @@ const Discover = (props) => {
   }
 
   const handleToggleSave = () => {
-    isSaved === false ? saveImage() : removeFromSaved();
+    image.isSaved === false ? saveImage() : removeFromSaved();
   }
 
   const saveImage = () => {
@@ -63,7 +65,7 @@ const Discover = (props) => {
     imagesToSave = imagesToSave.flat();
 
     saveToLocalStorage(imagesToSave);
-    setIsSaved(true);
+    setImage({ ...image, isSaved: true });
   }
 
   const removeFromSaved = () => {
@@ -74,7 +76,7 @@ const Discover = (props) => {
       return savedImage.date !== date;
     })
     saveToLocalStorage(newSavedImages);
-    setIsSaved(false);
+    setImage({ ...image, isSaved: false });
   }
 
   const share = () => {
@@ -98,7 +100,7 @@ const Discover = (props) => {
           round={true}
           iconFillColor='white' /> */}
         <button className='media-buttons' onClick={() => {share()}}>Share</button>
-        {isSaved === false ?
+        {image.isSaved === false ?
           <button className='media-buttons' onClick={() => {handleToggleSave()}}>Save Image</button> :
           <button className='media-buttons' onClick={() => {handleToggleSave()}}>Remove From Saved</button>
         }

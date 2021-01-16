@@ -3,3 +3,17 @@ export const saveToLocalStorage = (imagesToSave) => {
   let stringifiedImages = JSON.stringify(imagesToSave);
   localStorage.setItem('savedImages', stringifiedImages);
 }
+
+export const filterData = (data) => {
+  const { date, explanation, title, url } = data;
+  
+  const filteredData = {
+    date,
+    explanation,
+    title,
+    url,
+    isSaved: false
+  }
+
+  return filteredData;
+}
