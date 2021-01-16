@@ -1,6 +1,5 @@
-import React from 'react';
-import { Route, useParams } from 'react-router-dom';
-import { fetchPicturePicturesFromRange } from '../apiCalls';
+import React, { useState, useEffect } from 'react';
+import { Route } from 'react-router-dom';
 import Home from '../Home';
 import Header from '../Header';
 import Discover from '../Discover';
@@ -13,16 +12,10 @@ const App = () => {
     <main>
       <Header />
       <Route exact path='/home' component={Home} />
-      <Route exact path='/discover/:date?' component={Discover} />
-      <Route exact path='/saved'>
-        <Saved />
-      </Route>
+      <Route exact path='/discover' component={Discover} /> 
+      <Route exact path='/saved' component={Saved} />
     </main>
   )
 }
 
 export default App;
-
-
-// render page showing today's image
-// on click show random image

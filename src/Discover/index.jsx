@@ -2,7 +2,7 @@ import React, { useEffect, useState, useParams } from 'react';
 import { fetchPicturePicturesFromRange, fetchPictureFromDate } from '../apiCalls';
 import './Discover.scss';
 
-const Discover = () => {
+const Discover = (props) => {
   const [image, setImage] = useState({});
 
   useEffect(() => {
@@ -36,8 +36,22 @@ const Discover = () => {
     return value;
   }
 
-  const handleClick = () => {
+  const handleDiscoverClick = () => {
     generateRandomImage();
+  }
+
+  const saveToStorage = (image) => {
+    let imagesToSave = [];
+    const retrievedImages = localStorage.getItem('savedImages')
+    const images = JSON.parse(retrievedImages)
+    if (images) {
+      imagesToSave.push(images) 
+    }
+    imagesToSave.push(image)
+
+    localStorage.clear();
+    let stringifiedImages = JSON.stringify(imagesToSave.flat());
+    localStorage.setItem('savedImages', stringifiedImages);
   }
 
   return(
@@ -46,10 +60,13 @@ const Discover = () => {
         <h1>Discover Space</h1>
       </header>
       <main>
-        <img src={`${image.url}`} />
+        <section>
+          <img src={`${image.url}`} />
+        </section>
         <h2>{`${image.title}`}</h2>
         <p>{`${image.explanation}`}</p>
-        <button onClick={() => {handleClick()}}>Discover Again</button>
+        <button onClick={() => {handleDiscoverClick()}}>Discover Again</button>
+        <button onClick={() => {saveToStorage(image)}}>Save Image</button>
       </main>
     </section>
   ) 
