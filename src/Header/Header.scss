@@ -1,4 +1,37 @@
+@import 'src/sass/_mixins.scss';
+@import 'src/sass/_variables.scss';
+// header {
+//   display: flex;
+//   align-items: space-between;
+// }
+
 header {
-  display: flex;
-  align-items: space-between;
+  @include space-between;
+  width: 100%;
+}
+
+
+#page-title-link {
+  margin-left: 1em;
+  text-decoration: none;
+}
+
+h1 {
+  color: $header-font;
+  margin: 1.5em 0 1.5em 0;
+}
+
+nav {
+  @include space-between;
+}
+
+.nav-link {
+  text-decoration: none;
+  margin: 0 1em;
+  
+}
+
+h2 { 
+  color: $header-font;
+  margin-top: 2em;
 }

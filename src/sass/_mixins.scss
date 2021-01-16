@@ -3,3 +3,8 @@
   flex-direction: column;
   align-items: center;
 }
+
+@mixin space-between {
+  display: flex;
+  justify-content: space-between;
+}
