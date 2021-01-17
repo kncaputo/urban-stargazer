@@ -21,6 +21,7 @@ const customStyles = {
 const Saved = (props) => {
   const [savedImages, setSavedImages] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [displayImage, setDisplayImage] = useState({});
 
   useEffect(() => {
     const retrievedImages = localStorage.getItem('savedImages')
@@ -28,7 +29,11 @@ const Saved = (props) => {
     setSavedImages(images)
   }, [])
 
-  const openModal = () => {
+  const openModal = (date) => {
+    const displayImage = savedImages.find(image => {
+      return image.date === date
+    })
+    setDisplayImage(displayImage);
     setIsOpen(true);
   }
 
@@ -70,23 +75,18 @@ const Saved = (props) => {
     <main id='card-box'>
       {createCards()}
       <Modal
-          isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
-          onRequestClose={closeModal}
-          style={customStyles}
-          contentLabel="Example Modal"
-        >
- 
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <section>
+          <h2></h2>
+          <img src={`${displayImage.url}`} alt={`${displayImage.title}`}/>
           <button onClick={closeModal}>close</button>
-          <div>I am a modal</div>
-          <form>
-            <input />
-            <button>tab navigation</button>
-            <button>stays</button>
-            <button>inside</button>
-            <button>the modal</button>
-          </form>
-        </Modal>
+        </section>  
+      </Modal>
     </main>
   )
 }
