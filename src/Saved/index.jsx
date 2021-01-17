@@ -51,6 +51,7 @@ const Saved = (props) => {
   }
 
   const deleteSavedImage = (date) => {
+    closeModal();
     const newSavedImages = savedImages.filter(savedImage => {
       return savedImage.date !== date
     })

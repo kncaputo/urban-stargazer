@@ -6,16 +6,14 @@ import './SavedModal.scss';
 
 const SavedModal = (props) => {
   const { title, date, url, explanation } = props.displayImage;
-  const { deleteSavedImage } = props.deleteSavedImage;
-  const { closeModal } = props.closeModal;
 
   return (
     <IconContext.Provider value={{ color: 'white' }}>
       <section id='saved-modal-box'>
 
         <section id='modal-button-box'>
-          <BsFillStarFill className='modal-icon' alt='Remove from Saved' onClick={deleteSavedImage}/>
-          <AiOutlineClose className='modal-icon' alt='Close modal' onClick={closeModal}/>
+          <BsFillStarFill className='modal-icon' alt='Remove from Saved' onClick={() => props.deleteSavedImage(date)}/>
+          <AiOutlineClose className='modal-icon' alt='Close modal' onClick={() => props.closeModal()}/>
         </section>
 
         <section>
