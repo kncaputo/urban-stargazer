@@ -17,8 +17,11 @@ button {
   // margin: 2em .5em 1em .5em;
 }
 
-.media-buttons {
+.media-icons {
   margin: .25em;
+}
+.media-icons:hover {
+  cursor: pointer;
 }
 
 #button-box {

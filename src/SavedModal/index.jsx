@@ -10,7 +10,7 @@ const SavedModal = (props) => {
   const { closeModal } = props.closeModal;
 
   return (
-    <IconContext.Provider value={{ color: 'white'}}>
+    <IconContext.Provider value={{ color: 'white' }}>
       <section id='saved-modal-box'>
 
         <section id='modal-button-box'>
