@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchPictureFromDate } from '../apiCalls';
 import Card from '../Card';
 import { saveToLocalStorage } from '../utilities';
+
 import './Saved.scss';
 
 const Saved = (props) => {
