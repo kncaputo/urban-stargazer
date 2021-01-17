@@ -16,7 +16,7 @@ const App = () => {
       <Route exact path='/discover' component={Discover} /> 
       <Route exact path='/saved' component={Saved} />
       <footer id='footer'>
-        Photos brought to you by NASA 
+        <p>Photos brought to you by NASA's Astronomy Picture of the Day archive</p>
         <img id='logo' src={nasaLogo} alt='NASA logo' />
       </footer>
     </main>
