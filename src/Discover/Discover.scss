@@ -10,10 +10,7 @@
 
 #image {
   max-height: 85vh;
-}
-
-#image-title {
-  margin-top: .15em;
+  max-width: 90vw;
 }
 
 button {
@@ -21,9 +18,11 @@ button {
   // margin: 2em .5em 1em .5em;
 }
 
-.media-buttons {
-  margin: .25em;
-
+.media-icons {
+  margin: .5em;
+}
+.media-icons:hover {
+  cursor: pointer;
 }
 
 #button-box {
@@ -36,9 +35,12 @@ button {
 // }
 
 #image-title {
+  margin-top: .15em;
   font-weight: 300;
 }
 
 #explanation {
   font-size: small;
+  margin: .5em 1em 3em 1em;
+  padding: 0 2em;
 }

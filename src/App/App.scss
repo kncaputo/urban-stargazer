@@ -1,4 +1,5 @@
 @import '../sass/variables';
+@import '../sass/mixins';
 
 body {
   height: 100%;
@@ -15,10 +16,26 @@ main {
 }
 
 button:hover {
-
+  cursor: pointer;
 }
 
 #blockColorblindContent {
   display: none;
+}
 
+#footer {
+  border-top: 1px solid #0e0e0e;
+  padding: 1.5em 0;
+  background-color: $background-color;
+  @include center-column;
+}
+
+#footer>p {
+  flex-wrap: wrap;
+  font-size: small;
+}
+
+#logo {
+  height: 1.75em;
+  margin: .5em;
 }

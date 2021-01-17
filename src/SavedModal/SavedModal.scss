@@ -1,0 +1,47 @@
+@import '../sass/mixins';
+@import '../sass/variables';
+
+#saved-modal-box {
+  @include center-column;
+  background-color: $background-color;
+}
+
+#modal-button-box {
+  @include space-between;
+  width: -webkit-fill-available;
+}
+
+#modal-image {
+  max-height: 60vh;
+}
+
+#modal-footer-buttons {
+  @include space-between;
+}
+
+#modal-title {
+  font-weight: 300;
+  margin: .5em 1em;
+  color: $header-font;
+}
+
+#subtitle {
+  @extend #modal-title;
+  font-size: small;
+  margin: .5em 1em .5em 1.2em;
+}
+
+.modal-icon {
+  margin: .5em;
+}
+
+.modal-icon:hover {
+  cursor: pointer;
+}
+
+#modal-explanation {
+  display: flex;
+  color: $header-font;
+  font-size: x-small;
+  padding: .5em 1.5em 1.5em 1.5em;
+}

@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useParams } from 'react';
 import { fetchPicturePicturesFromRange, fetchPictureFromDate } from '../apiCalls';
 import { EmailShareButton, FacebookShareButton, TwitterShareButton } from "react-share";
+import { BsStar, BsFillStarFill, BsLink45Deg } from 'react-icons/bs';
+import { IconContext } from 'react-icons/lib';
 import { saveToLocalStorage, filterData } from '../utilities';
 import './Discover.scss';
 
@@ -79,38 +81,33 @@ const Discover = (props) => {
     setImage({ ...image, isSaved: false });
   }
 
-  const share = () => {
+  const generateLink = () => {
 
   }
 
   return(
-    <main id='discover-main'>
-      <section id='image-box'>
-        <img src={`${image.url}`} id='image' />
-      </section>
+    <IconContext.Provider value={{ color: 'white' }}>
+      <main id='discover-main'>
+        <section id='image-box'>
+          <img src={`${image.url}`} id='image' />
+        </section>
 
-      <h2 id='image-title'>{`${image.title}`}</h2>
-      <button onClick={() => {handleDiscoverClick()}}>Discover Again</button>
+        <h2 id='image-title'>{`${image.title}`}</h2>
 
-      <section id='button-box'>
-        {/* <EmailShareButton 
-          url={image.url} 
-          id='email-share-button'
-          size={32} 
-          round={true}
-          iconFillColor='white' /> */}
-        <button className='media-buttons' onClick={() => {share()}}>Share</button>
-        {image.isSaved === false ?
-          <button className='media-buttons' onClick={() => {handleToggleSave()}}>Save Image</button> :
-          <button className='media-buttons' onClick={() => {handleToggleSave()}}>Remove From Saved</button>
-        }
-      </section>
+        <section id='button-box'>
+          <BsLink45Deg className='media-icons' onClick={() => {generateLink()}} alt='Get link' />
+          {image.isSaved === false ? 
+            <BsStar className='media-icons' onClick={() => {handleToggleSave()}} alt='Save image' /> :
+            <BsFillStarFill className='media-icons' onClick={() => {handleToggleSave()}} alt='Remove from Saved' />
+          }
+          <button className='media-icons' onClick={() => {handleDiscoverClick()}}>Discover Again</button>
+        </section>
 
-
-      <section>
-        <p id='explanation'>{`${image.explanation}`}</p>
-      </section>    
-    </main>
+        <section className='explanation-box'>
+          <p id='explanation'>{`${image.explanation}`}</p>
+        </section>
+      </main>
+    </IconContext.Provider>
   ) 
 }
 
