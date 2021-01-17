@@ -33,3 +33,9 @@
 .modal-icon:hover {
   cursor: pointer;
 }
+
+#modal-explanation {
+  display: flex;
+  color: $header-font;
+  font-size: x-small;
+}

@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai'
 import { BsFillStarFill } from 'react-icons/bs'
 import { IconContext } from 'react-icons/lib';
 import './SavedModal.scss';
 
 const SavedModal = (props) => {
-  const { title, url } = props.displayImage;
+  const { title, url, explanation } = props.displayImage;
   const { deleteSavedImage } = props.deleteSavedImage;
   const { closeModal } = props.closeModal;
 
@@ -23,7 +23,7 @@ const SavedModal = (props) => {
         </section>
         <section>
           <h4 id='modal-title'>{title}</h4>
-
+          <section id='modal-explanation'>{explanation}</section>
         </section>
       </section>  
     </IconContext.Provider>
