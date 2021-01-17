@@ -89,6 +89,7 @@ const Saved = (props) => {
         <SavedModal
           displayImage={displayImage}
           closeModal={closeModal}
+          deleteSavedImage={deleteSavedImage}
         />  
         {/* <section>
           <h2>{displayImage.title}</h2>
