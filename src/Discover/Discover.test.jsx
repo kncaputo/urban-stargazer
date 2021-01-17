@@ -26,6 +26,7 @@ describe(('Discover'), () => {
       const getLinkButton = screen.getByTestId('link-icon');
       const saveButton = screen.getByTestId('save-icon');
       const discoverAgainButton = screen.getByText('Discover Again');
+      const explanation = screen.getByText('The jets are over a million light years long.');
 
       expect(fetchPictureFromDate).toHaveBeenCalled();
       expect(title).toBeInTheDocument();
@@ -33,5 +34,6 @@ describe(('Discover'), () => {
       expect(getLinkButton).toBeInTheDocument();
       expect(saveButton).toBeInTheDocument();
       expect(discoverAgainButton).toBeInTheDocument();
+      expect(explanation).toBeInTheDocument();
   });
 });
