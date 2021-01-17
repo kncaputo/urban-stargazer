@@ -5,7 +5,7 @@ import { IconContext } from 'react-icons/lib';
 import './SavedModal.scss';
 
 const SavedModal = (props) => {
-  const { title, url, explanation } = props.displayImage;
+  const { title, date, url, explanation } = props.displayImage;
   const { deleteSavedImage } = props.deleteSavedImage;
   const { closeModal } = props.closeModal;
 
@@ -23,6 +23,7 @@ const SavedModal = (props) => {
         </section>
         <section>
           <h4 id='modal-title'>{title}</h4>
+          <p id='subtitle'>{date}</p>
           <section id='modal-explanation'>{explanation}</section>
         </section>
       </section>  

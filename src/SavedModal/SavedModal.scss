@@ -25,9 +25,14 @@
   color: $header-font;
 }
 
+#subtitle {
+  @extend #modal-title;
+  font-size: small;
+  margin: .5em 1em .5em 1.2em;
+}
+
 .modal-icon {
   margin: .5em;
-
 }
 
 .modal-icon:hover {
