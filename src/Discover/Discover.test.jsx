@@ -10,10 +10,10 @@ jest.mock('../apiCalls');
 
 describe(('Discover'), () => {
   
-  beforeEach(() => {
+  beforeEach(async() => {
     fetchPictureFromDate.mockResolvedValueOnce(image);
     
-    act(() => {
+    await act(async () => {
       render(
         <Discover />
       )
@@ -22,8 +22,10 @@ describe(('Discover'), () => {
 
   it('should render correctly', () => {
       const title = screen.getByText('Jets from Unusual Galaxy Centaurus A');
-      const img = screen.getByAltText('')
+      const img = screen.getByAltText('Jets from Unusual Galaxy Centaurus A from 2021-01-17');
+      
       expect(fetchPictureFromDate).toHaveBeenCalled();
       expect(title).toBeInTheDocument();
+      expect(img).toBeInTheDocument();
   });
 });

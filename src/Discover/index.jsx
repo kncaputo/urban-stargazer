@@ -8,7 +8,7 @@ import './Discover.scss';
 
 const Discover = (props) => {
   const [image, setImage] = useState({});
-  const { title, url, explanation } = image;
+  const { title, url, explanation, date } = image;
 
   useEffect(() => {
     generateRandomImage();
@@ -90,7 +90,7 @@ const Discover = (props) => {
     <IconContext.Provider value={{ color: 'white' }}>
       <main id='discover-main'>
         <section id='image-box'>
-          <img src={`${image.url}`} id='image' alt={``}/>
+          <img src={`${url}`} id='image' alt={`${title} from ${date}`}/>
         </section>
 
         <h2 id='image-title'>{`${image.title}`}</h2>
