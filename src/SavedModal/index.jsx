@@ -1,5 +1,6 @@
 import React from 'react';
 import { AiOutlineClose } from 'react-icons/ai'
+import { BsFillStarFill } from 'react-icons/bs'
 import { IconContext } from 'react-icons/lib';
 import './SavedModal.scss';
 
@@ -13,9 +14,8 @@ const SavedModal = (props) => {
       <section id='saved-modal-box'>
 
         <section id='modal-button-box'>
-          <button className='modal-button' onClick={deleteSavedImage}>Remove from Saved</button>
-          <AiOutlineClose className='modal-button' onClick={closeModal}/>
-          {/* <button className='modal-button' onClick={closeModal}><AiOutlineClose onClick={closeModal}/></button> */}
+          <BsFillStarFill className='modal-icon' alt='Remove from Saved' onClick={deleteSavedImage}/>
+          <AiOutlineClose className='modal-icon' alt='Close modal' onClick={closeModal}/>
         </section>
 
         <section>
