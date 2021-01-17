@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useParams } from 'react';
-import { fetchPicturePicturesFromRange, fetchPictureFromDate } from '../apiCalls';
+import { fetchPictureFromDate } from '../apiCalls';
 import { EmailShareButton, FacebookShareButton, TwitterShareButton } from "react-share";
 import { BsStar, BsFillStarFill, BsLink45Deg } from 'react-icons/bs';
 import { IconContext } from 'react-icons/lib';
@@ -8,6 +8,7 @@ import './Discover.scss';
 
 const Discover = (props) => {
   const [image, setImage] = useState({});
+  const { title, url, explanation } = image;
 
   useEffect(() => {
     generateRandomImage();
@@ -89,7 +90,7 @@ const Discover = (props) => {
     <IconContext.Provider value={{ color: 'white' }}>
       <main id='discover-main'>
         <section id='image-box'>
-          <img src={`${image.url}`} id='image' />
+          <img src={`${image.url}`} id='image' alt={``}/>
         </section>
 
         <h2 id='image-title'>{`${image.title}`}</h2>
