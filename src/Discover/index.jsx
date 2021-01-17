@@ -96,9 +96,9 @@ const Discover = (props) => {
         <h2 id='image-title'>{`${image.title}`}</h2>
 
         <section id='button-box'>
-          <BsLink45Deg className='media-icons' onClick={() => {generateLink()}} alt='Get link' />
+          <BsLink45Deg className='media-icons' onClick={() => {generateLink()}} alt='Get link' data-testid='link-icon' />
           {image.isSaved === false ? 
-            <BsStar className='media-icons' onClick={() => {handleToggleSave()}} alt='Save image' /> :
+            <BsStar className='media-icons' onClick={() => {handleToggleSave()}} alt='Save image' data-testid='save-icon'/> :
             <BsFillStarFill className='media-icons' onClick={() => {handleToggleSave()}} alt='Remove from Saved' />
           }
           <button className='media-icons' onClick={() => {handleDiscoverClick()}}>Discover Again</button>
