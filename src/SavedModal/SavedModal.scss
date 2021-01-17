@@ -21,7 +21,7 @@
 
 #modal-title {
   font-weight: 300;
-  margin: .5em;
+  margin: .5em 1em;
   color: $header-font;
 }
 
@@ -38,4 +38,5 @@
   display: flex;
   color: $header-font;
   font-size: x-small;
+  padding: .5em 1.5em 1.5em 1.5em;
 }
