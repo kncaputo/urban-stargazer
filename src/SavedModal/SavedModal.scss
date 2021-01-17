@@ -1,0 +1,20 @@
+@import '../sass/mixins';
+@import '../sass/variables';
+
+#saved-modal-box {
+  @include center-column;
+  background-color: $background-color;
+}
+
+#close-button-box {
+  display: flex;
+  align-self: flex-end;
+}
+
+#modal-image {
+  max-height: 60vh;
+}
+
+#modal-footer-buttons {
+  @include space-between;
+}

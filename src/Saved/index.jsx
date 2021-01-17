@@ -4,6 +4,7 @@ import Card from '../Card';
 import { saveToLocalStorage } from '../utilities';
 import Modal from 'react-modal';
 import './Saved.scss';
+import SavedModal from '../SavedModal';
 
 // Modal.setAppElement('')
 
@@ -15,7 +16,11 @@ const customStyles = {
     bottom                : 'auto',
     marginRight           : '-50%',
     transform             : 'translate(-50%, -50%)'
+  },
+  overlay: {
+    backgroundColor: 'rgb(0 0 0/75%)',
   }
+ 
 };
 
 const Saved = (props) => {
@@ -81,11 +86,16 @@ const Saved = (props) => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <section>
-          <h2></h2>
+        <SavedModal
+          displayImage={displayImage}
+          closeModal={closeModal}
+        />  
+        {/* <section>
+          <h2>{displayImage.title}</h2>
           <img src={`${displayImage.url}`} alt={`${displayImage.title}`}/>
           <button onClick={closeModal}>close</button>
-        </section>  
+          <button onClick={closeModal}>close</button>
+        </section>   */}
       </Modal>
     </main>
   )
