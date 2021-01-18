@@ -21,27 +21,15 @@ describe('SavedModal', () => {
     );
   });
 
-  it('should have an image', () => {
+  it('should render correctly', () => {
     const img = screen.getByAltText('Jets from Unusual Galaxy Centaurus A');
-  
-    expect(img).toBeInTheDocument();
-  });
-
-  it('should have a title', () => {
     const title = screen.getByText('Jets from Unusual Galaxy Centaurus A');
-  
-    expect(title).toBeInTheDocument();
-  });
-
-  it('should have a date', () => {
     const date = screen.getByText('2021-01-17');
-  
-    expect(date).toBeInTheDocument();
-  });
-
-  it('should have an explanation', () => {
     const explanation = screen.getByText('The jets are over a million light years long.');
-  
+
+    expect(img).toBeInTheDocument();
+    expect(title).toBeInTheDocument();
+    expect(date).toBeInTheDocument();
     expect(explanation).toBeInTheDocument();
   });
 
