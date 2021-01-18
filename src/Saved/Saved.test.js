@@ -1,8 +1,8 @@
 import Saved from './index.jsx';
-import { act, render, screen, fireEvent } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { saveToLocalStorage } from '../utilities';
 import { filteredImage1, filteredImage2 } from '../sampleData';
+import userEvent from '@testing-library/user-event';
 jest.mock('../utilities');
 
 describe('Saved', () => {
@@ -18,7 +18,7 @@ describe('Saved', () => {
   });
 
   beforeEach(async () => {
-    
+
     await act(async () => { 
       render(
         <Saved />
@@ -26,11 +26,25 @@ describe('Saved', () => {
     });
   });
 
-  it('should render correctly and display saved images', () => {
-    const img1 = screen.getByAltText('Jets from Unusual Galaxy Centaurus A');
-    const img2 = screen.getByAltText('Saturn Rings');
+  it('should display saved image card', () => {
+    const img1Card = screen.getByAltText('Jets from Unusual Galaxy Centaurus A');
+    const img2Card = screen.getByAltText('Saturn Rings');
 
-    expect(img1).toBeInTheDocument();
-    expect(img2).toBeInTheDocument();
+    expect(img1Card).toBeInTheDocument();
+    expect(img2Card).toBeInTheDocument();
+  });
+
+it('should open a modal displaying larger full-size and image details when a card is clicked', () => {
+    const img1Card = screen.getByAltText('Jets from Unusual Galaxy Centaurus A');
+      
+    userEvent.click(img1Card)
+
+    const title = screen.getByText('Jets from Unusual Galaxy Centaurus A');
+    const date = screen.getByText('2021-01-17');
+    const explanation = screen.getByText('The jets are over a million light years long.');
+
+    expect(title).toBeInTheDocument();
+    expect(date).toBeInTheDocument();
+    expect(explanation).toBeInTheDocument();
   });
 });
