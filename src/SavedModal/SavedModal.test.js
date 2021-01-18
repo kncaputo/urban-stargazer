@@ -33,20 +33,11 @@ describe('SavedModal', () => {
     expect(explanation).toBeInTheDocument();
   });
 
-  // it('should have an icon that removes image from \'Saved\' and closes modal when clicked', () => {
-  //   const removeFromSaved = screen.getByTestId('remove-saved');
+  it('should have an icon that closes modal when clicked', () => {
+    const close = screen.getByTestId('close-saved-modal');
     
-  //   fireEvent.click(removeFromSaved);
+    userEvent.click(close);
 
-  //   expect(mockCloseModal).toHaveBeenCalled();
-  //   expect(mockDeleteSavedImage).toBeHaveBeenCalled();
-  // });
-
-  // it('should have an icon that closes modal when clicked', () => {
-   
-  
-  //   expect().toBeInTheDocument();
-  // });
-
-
+    expect(mockCloseModal).toHaveBeenCalled();
+  });
 });

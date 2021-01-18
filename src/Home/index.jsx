@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Home = () => {
 
   return (
-    <main id='home-main'>
+    <main data-testid='home' id='home-main'>
       <h1>Welcome to Urban Stargazer</h1>
       <Link to='/discover'> 
         <button>Click for random image</button>

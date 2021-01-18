@@ -3,7 +3,7 @@ import { act, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { filteredImage1, filteredImage2 } from '../sampleData';
 import userEvent from '@testing-library/user-event';
-jest.mock('../utilities');
+jest.mock('../utilities/utilities');
 
 describe('Saved', () => {
   const mockSavedImages = [filteredImage1, filteredImage2];
