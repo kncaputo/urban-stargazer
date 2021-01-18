@@ -11,6 +11,14 @@ jest.mock('../apiCalls');
 describe(('Discover'), () => {
   // saveToLocalStorage = jest.fn();
 
+  Object.defineProperty(window, 'localStorage', {
+    value: {
+      getItem: jest.fn(() => null),
+      setItem: jest.fn(() => null)
+    },
+    writable: true
+  });
+
   beforeEach(async() => {
     fetchPictureFromDate.mockResolvedValueOnce(image1);
     
@@ -54,4 +62,16 @@ describe(('Discover'), () => {
     expect(img).toBeInTheDocument();
     expect(explanation).toBeInTheDocument();
   });
+
+  // it('should add image to Saved when star icon is clicked', async () => {
+  //     await act(async () => {
+  //       const saveButton = screen.getByTestId('save-icon');
+        
+  //       expect(saveToLocalStorage).toBeCalled();
+  //     })
+  // });
+
+  // it('should remove image from Saved when star icon is clicked', () => {
+
+  // });
 });

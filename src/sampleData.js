@@ -19,3 +19,10 @@ export const image2 = {
   url: 'https://apod.nasa.gov/apod/image/1111/saturn-rings.jpg',
   copyright: 'Erin Lloyd'
 }
+
+// export const filteredImage1 = {
+//   date: '2021-01-17',
+//   explanation: 'The jets are over a million light years long.',
+//   title: 'Jets from Unusual Galaxy Centaurus A',
+//   url: 'https://apod.nasa.gov/apod/image/2101/CenAjets_EsoNasa_960.jpg'
+// }
