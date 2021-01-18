@@ -1,8 +1,7 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
 import Card from './index.jsx';
-import { image1 } from '../sampleData';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { image1 } from '../sampleData';
 
 describe('Card', () => {
   let mockedOpenModal;
@@ -22,7 +21,7 @@ describe('Card', () => {
     );
   });
 
-  it('should render correctly', () => {
+  it('should render correctly with an image', () => {
     const img = screen.getByAltText('Jets from Unusual Galaxy Centaurus A');
 
     expect(img).toBeInTheDocument();
