@@ -11,8 +11,7 @@ export const filterData = (data) => {
     date,
     explanation,
     title,
-    url,
-    isSaved: false
+    url
   }
 
   return filteredData;

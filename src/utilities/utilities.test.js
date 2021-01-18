@@ -1,4 +1,4 @@
-import { saveToLocalStorage, filterData } from './index';
+import { saveToLocalStorage, filterData } from './utilities';
 import '@testing-library/jest-dom';
 import { image1, filteredImage1, filteredImage2 } from '../sampleData';
 

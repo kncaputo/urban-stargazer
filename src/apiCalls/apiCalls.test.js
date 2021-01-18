@@ -1,4 +1,4 @@
-import { fetchPictureFromDate } from './index';
+import { fetchPictureFromDate } from './apiCalls';
 import { act, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';

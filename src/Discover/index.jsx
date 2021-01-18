@@ -1,18 +1,33 @@
 import React, { useEffect, useState, useParams } from 'react';
-import { fetchPictureFromDate } from '../apiCalls';
+import { fetchPictureFromDate } from '../apiCalls/apiCalls';
 import { EmailShareButton, FacebookShareButton, TwitterShareButton } from "react-share";
 import { BsStar, BsFillStarFill, BsLink45Deg } from 'react-icons/bs';
 import { IconContext } from 'react-icons/lib';
-import { saveToLocalStorage, filterData } from '../utilities';
+import { saveToLocalStorage, filterData } from '../utilities/utilities';
 import './Discover.scss';
 
 const Discover = (props) => {
   const [image, setImage] = useState({});
+  const [isSaved, setIsSaved] = useState(false);
+
   const { title, url, explanation, date } = image;
 
   useEffect(() => {
     generateRandomImage();
+    checkSavedForImage();
   }, []);
+
+  const checkSavedForImage = () => {
+    const savedImages = retrieveFromLocalStorage();
+    const alreadySaved = savedImages.find(savedImage => {
+      return savedImage.date === image.date;
+    })
+    if (alreadySaved) {
+      setIsSaved(true);
+    } else {
+      setIsSaved(false);
+    }
+  }
 
   const generateRandomImage = () => {
     const date = generateRandomDate();
@@ -55,7 +70,7 @@ const Discover = (props) => {
   }
 
   const handleToggleSave = () => {
-    image.isSaved === false ? saveImage() : removeFromSaved();
+    isSaved === false ? saveImage() : removeFromSaved();
   }
 
   const saveImage = () => {
@@ -69,7 +84,7 @@ const Discover = (props) => {
     imagesToSave = imagesToSave.flat();
 
     saveToLocalStorage(imagesToSave);
-    setImage({ ...image, isSaved: true });
+    setIsSaved(true);
   }
 
   const removeFromSaved = () => {
@@ -80,7 +95,7 @@ const Discover = (props) => {
       return savedImage.date !== date;
     })
     saveToLocalStorage(newSavedImages);
-    setImage({ ...image, isSaved: false });
+    setIsSaved(false);
   }
 
   const generateLink = () => {
@@ -98,7 +113,7 @@ const Discover = (props) => {
 
         <section id='button-box'>
           <BsLink45Deg className='media-icons' onClick={() => {generateLink()}} alt='Get link' data-testid='link-icon' />
-          {image.isSaved === false ? 
+          {isSaved === false ? 
             <BsStar className='media-icons' onClick={() => {handleToggleSave()}} alt='Save image' data-testid='save-icon'/> :
             <BsFillStarFill className='media-icons' onClick={() => {handleToggleSave()}} alt='Remove from Saved' />
           }
