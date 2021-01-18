@@ -1,10 +1,9 @@
-import React from 'react';
-import { act, render, screen, fireEvent } from '@testing-library/react';
 import Discover from './index.jsx';
-import { fetchPictureFromDate } from '../apiCalls';
-import { filterData, saveToLocalStorage } from '../utilities';
-import { image1, image2 } from '../sampleData';
+import { act, render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { fetchPictureFromDate } from '../apiCalls';
+import { image1, image2 } from '../sampleData';
+import { filterData, saveToLocalStorage } from '../utilities';
 jest.mock('../apiCalls');
 
 describe('Discover', () => {
