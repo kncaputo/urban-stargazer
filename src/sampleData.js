@@ -33,4 +33,5 @@ export const filteredImage2 = {
   explanation: 'The rings of Saturn burning bright',
   title: 'Saturn Rings',
   url: 'https://apod.nasa.gov/apod/image/1111/saturn-rings.jpg',
+  isSaved: false
 };
