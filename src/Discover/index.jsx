@@ -101,7 +101,7 @@ const Discover = (props) => {
             <BsStar className='media-icons' onClick={() => {handleToggleSave()}} alt='Save image' data-testid='save-icon'/> :
             <BsFillStarFill className='media-icons' onClick={() => {handleToggleSave()}} alt='Remove from Saved' />
           }
-          <button className='media-icons' onClick={() => {handleDiscoverClick()}}>Discover Again</button>
+          <button className='media-icons' onClick={() => {handleDiscoverClick()}} data-testid='discover-again'>Discover Again</button>
         </section>
 
         <section className='explanation-box'>

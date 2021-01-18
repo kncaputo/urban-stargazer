@@ -1,17 +1,18 @@
 import React from 'react';
-import { act, render, screen } from '@testing-library/react';
+import { act, render, screen, userEvent, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Discover from './index.jsx';
 import { fetchPictureFromDate } from '../apiCalls';
-// import { filterData, saveToLocalStorage } from '../utilities';
-import { image } from '../sampleData';
+import { filterData, saveToLocalStorage } from '../utilities';
+import { image1, image2 } from '../sampleData';
 import '@testing-library/jest-dom';
 jest.mock('../apiCalls');
 
 describe(('Discover'), () => {
-  
+  // saveToLocalStorage = jest.fn();
+
   beforeEach(async() => {
-    fetchPictureFromDate.mockResolvedValueOnce(image);
+    fetchPictureFromDate.mockResolvedValueOnce(image1);
     
     await act(async () => {
       render(
@@ -35,5 +36,18 @@ describe(('Discover'), () => {
       expect(saveButton).toBeInTheDocument();
       expect(discoverAgainButton).toBeInTheDocument();
       expect(explanation).toBeInTheDocument();
+  });
+
+  it('should render a new random image when Discover Again is clicked', async () => {
+    fetchPictureFromDate.mockResolvedValueOnce(image2);
+    
+    await act(async () => {
+      const discoverAgainButton = screen.getByText('Discover Again');
+      fireEvent.click(discoverAgainButton);
+
+    });
+
+    const title = screen.getByText('Saturn Rings');
+    expect(title).toBeInTheDocument();
   });
 });
