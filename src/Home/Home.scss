@@ -6,3 +6,16 @@
   // width: 100%;
 }
 
+.box {
+  display: flex;
+  flex-direction: row;
+}
+
+.aside {
+  flex-grow: 3;
+}
+
+.center {
+  flex-grow: 1;
+  max-width: 20em;
+}
