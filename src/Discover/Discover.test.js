@@ -8,7 +8,7 @@ import { image1, image2 } from '../sampleData';
 import '@testing-library/jest-dom';
 jest.mock('../apiCalls');
 
-describe(('Discover'), () => {
+describe('Discover', () => {
   // saveToLocalStorage = jest.fn();
 
   Object.defineProperty(window, 'localStorage', {
