@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { fetchPictureFromDate } from '../apiCalls';
 import Card from '../Card';
 import { saveToLocalStorage } from '../utilities';
 import Modal from 'react-modal';

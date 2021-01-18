@@ -1,6 +1,5 @@
 import React from 'react';
-import { act, render, screen, userEvent, fireEvent } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { act, render, screen, fireEvent } from '@testing-library/react';
 import Discover from './index.jsx';
 import { fetchPictureFromDate } from '../apiCalls';
 import { filterData, saveToLocalStorage } from '../utilities';
@@ -9,7 +8,6 @@ import '@testing-library/jest-dom';
 jest.mock('../apiCalls');
 
 describe('Discover', () => {
-  // saveToLocalStorage = jest.fn();
 
   Object.defineProperty(window, 'localStorage', {
     value: {
@@ -19,9 +17,9 @@ describe('Discover', () => {
     writable: true
   });
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     fetchPictureFromDate.mockResolvedValueOnce(image1);
-    
+
     await act(async () => {
       render(
         <Discover />
