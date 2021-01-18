@@ -30,3 +30,8 @@ const SavedModal = (props) => {
 }
 
 export default SavedModal;
+
+SavedModal.propTypes = {
+  title: PropTypes.string,
+  date: 
+};
