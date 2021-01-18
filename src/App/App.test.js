@@ -34,4 +34,8 @@ describe('App', () => {
     expect(footerText).toBeInTheDocument();
     expect(footerLogo).toBeInTheDocument();
   });
+
+  it('should render \'Discover\' component and random photo when user clicks \'Discover\' nav link', () => {
+    
+  })
 });
