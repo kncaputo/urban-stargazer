@@ -4,7 +4,6 @@ import './Header.scss';
 const Header = () => {
   return(
     <header>
-
       <Link to='/home' className='nav-link' id='page-title-link'>
         <h1>Urban Stargazer</h1>
       </Link>

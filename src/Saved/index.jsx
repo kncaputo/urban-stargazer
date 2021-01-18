@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { fetchPictureFromDate } from '../apiCalls';
 import Card from '../Card';
-import { saveToLocalStorage } from '../utilities';
+import { saveToLocalStorage } from '../utilities/utilities';
 import Modal from 'react-modal';
 import './Saved.scss';
 import SavedModal from '../SavedModal';
@@ -92,12 +91,6 @@ const Saved = (props) => {
           closeModal={closeModal}
           deleteSavedImage={deleteSavedImage}
         />  
-        {/* <section>
-          <h2>{displayImage.title}</h2>
-          <img src={`${displayImage.url}`} alt={`${displayImage.title}`}/>
-          <button onClick={closeModal}>close</button>
-          <button onClick={closeModal}>close</button>
-        </section>   */}
       </Modal>
     </main>
   )
