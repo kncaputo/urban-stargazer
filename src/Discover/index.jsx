@@ -23,6 +23,7 @@ const Discover = (props) => {
       setImage(image);
     })
     .catch(error => console.log(error))
+    console.log(image)
   }
 
   const generateRandomDate = () => {

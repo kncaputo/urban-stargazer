@@ -9,8 +9,8 @@ describe('SavedModal', () => {
   let mockDeleteSavedImage;
 
   beforeEach(() => {
-    mockCloseModal = jest.fn();
-    mockDeleteSavedImage = jest.fn();
+    mockCloseModal.fn();
+    mockDeleteSavedImage.fn();
   
     render(
       <SavedModal 

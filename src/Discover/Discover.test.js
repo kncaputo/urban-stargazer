@@ -2,9 +2,10 @@ import Discover from './index.jsx';
 import { act, render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { fetchPictureFromDate } from '../apiCalls';
-import { image1, image2 } from '../sampleData';
+import { image1, image2, filteredImage1 } from '../sampleData';
 import { filterData, saveToLocalStorage } from '../utilities';
 jest.mock('../apiCalls');
+jest.mock('../utilities');
 
 describe('Discover', () => {
 
@@ -15,9 +16,10 @@ describe('Discover', () => {
     },
     writable: true
   });
-
+  
   beforeEach(async () => {
     fetchPictureFromDate.mockResolvedValueOnce(image1);
+    filterData.mockResolvedValueOnce(filteredImage1);
 
     await act(async () => {
       render(
@@ -26,8 +28,9 @@ describe('Discover', () => {
     })
   });
 
-  it('should render correctly', () => {
-      const title = screen.getByText('Jets from Unusual Galaxy Centaurus A');
+  it('should render correctly', async () => {
+      let title;
+      await waitFor(() => title = screen.getByText('Jets from Unusual Galaxy Centaurus A'));
       const img = screen.getByAltText('Jets from Unusual Galaxy Centaurus A from 2021-01-17');
       const getLinkButton = screen.getByTestId('link-icon');
       const saveButton = screen.getByTestId('save-icon');
