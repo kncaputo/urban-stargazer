@@ -44,10 +44,14 @@ describe(('Discover'), () => {
     await act(async () => {
       const discoverAgainButton = screen.getByText('Discover Again');
       fireEvent.click(discoverAgainButton);
-
     });
 
     const title = screen.getByText('Saturn Rings');
+    const img = screen.getByAltText('Saturn Rings from 2020-12-11');
+    const explanation = screen.getByText('The rings of Saturn burning bright');
+
     expect(title).toBeInTheDocument();
+    expect(img).toBeInTheDocument();
+    expect(explanation).toBeInTheDocument();
   });
 });
