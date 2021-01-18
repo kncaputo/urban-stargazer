@@ -1,3 +1,6 @@
-#home-main {
-  background-image: '../assets/hubble-stars.jpg';
+.home-main {
+  background-image: url('../assets/hubble-stars.jpg') !important;
+  background-size: contain;
+  background-position: top;
+  background: cover;
 }
