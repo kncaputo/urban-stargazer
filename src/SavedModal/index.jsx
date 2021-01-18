@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { AiOutlineClose } from 'react-icons/ai'
 import { BsFillStarFill } from 'react-icons/bs'
 import { IconContext } from 'react-icons/lib';
@@ -33,5 +34,7 @@ export default SavedModal;
 
 SavedModal.propTypes = {
   title: PropTypes.string,
-  date: 
+  date: PropTypes.string,
+  url: PropTypes.string,
+  explanation: PropTypes.string
 };
