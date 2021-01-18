@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useParams } from 'react';
-import { fetchPictureFromDate } from '../apiCalls/apiCalls';
-import { EmailShareButton, FacebookShareButton, TwitterShareButton } from "react-share";
+import { fetchPictureFromDate } from '../apiCalls';
 import { BsStar, BsFillStarFill, BsLink45Deg } from 'react-icons/bs';
 import { IconContext } from 'react-icons/lib';
 import { saveToLocalStorage, filterData } from '../utilities/utilities';

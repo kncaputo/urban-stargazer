@@ -2,10 +2,10 @@ import App from './index.jsx';
 import { act, render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
-import { fetchPictureFromDate } from '../apiCalls/apiCalls';
+import { fetchPictureFromDate } from '../apiCalls';
 import { image1, image2 } from '../sampleData';
 import { filterData, saveToLocalStorage } from '../utilities/utilities';
-jest.mock('../apiCalls/apiCalls');
+jest.mock('../apiCalls');
 
 describe('App', () => {
 
@@ -36,6 +36,8 @@ describe('App', () => {
   });
 
   it('should render \'Discover\' component and random photo when user clicks \'Discover\' nav link', () => {
+    const discover = screen.getByText('Discover');
+
     
   })
 });

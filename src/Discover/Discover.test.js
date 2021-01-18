@@ -1,11 +1,10 @@
 import Discover from './index.jsx';
 import { act, render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { fetchPictureFromDate } from '../apiCalls/apiCalls';
+import { fetchPictureFromDate } from '../apiCalls';
 import { image1, image2, filteredImage1 } from '../sampleData';
 import { filterData, saveToLocalStorage } from '../utilities/utilities';
-jest.mock('../apiCalls/apiCalls');
-// jest.mock('../utilities/utilities');
+jest.mock('../apiCalls');
 
 describe('Discover', () => {
   const mockSavedImages = [filteredImage1];
@@ -22,13 +21,12 @@ describe('Discover', () => {
   
   beforeEach(async () => {
     fetchPictureFromDate.mockResolvedValueOnce(image1);
-    // filterData.mockResolvedValueOnce(filteredImage1);
 
     await act(async () => {
       render(
         <Discover />
-      )
-    })
+      );
+    });
   });
 
   it('should render correctly', async () => {
@@ -64,16 +62,4 @@ describe('Discover', () => {
     expect(img).toBeInTheDocument();
     expect(explanation).toBeInTheDocument();
   });
-
-  // it('should add image to Saved when star icon is clicked', async () => {
-  //     await act(async () => {
-  //       const saveButton = screen.getByTestId('save-icon');
-        
-  //       expect(saveToLocalStorage).toBeCalled();
-  //     })
-  // });
-
-  // it('should remove image from Saved when star icon is clicked', () => {
-
-  // });
 });
