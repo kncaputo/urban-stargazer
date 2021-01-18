@@ -1,15 +1,16 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
 import Card from './index.jsx';
 import { image1 } from '../sampleData';
 import '@testing-library/jest-dom';
 
 describe('Card', () => {
+  let mockedOpenModal;
+
   beforeEach(() => {
-  const { url, title, date } = image1;
-    const mockedOpenModal = jest.fn();
-  
+    const { url, title, date } = image1;
+    mockedOpenModal = jest.fn();
+
     render(
       <Card 
         key={date}
@@ -28,6 +29,10 @@ describe('Card', () => {
   });
 
   it('should call openModal on click', () => {
+    const card = screen.getByTestId('card-2021-01-17');
+    
+    fireEvent.click(card);
 
+    expect(mockedOpenModal).toHaveBeenCalledWith('2021-01-17');
   });
 });
