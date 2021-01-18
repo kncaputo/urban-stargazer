@@ -12,7 +12,6 @@ describe('Saved', () => {
   Object.defineProperty(window, 'localStorage', {
     value: {
       getItem: (() => mockStringifyedImages),
-      setItem: jest.fn(() => null)
     },
     writable: true
   });
