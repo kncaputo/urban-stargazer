@@ -1,11 +1,11 @@
 import Discover from './index.jsx';
 import { act, render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { fetchPictureFromDate } from '../apiCalls';
+import { fetchPictureFromDate } from '../apiCalls/apiCalls';
 import { image1, image2, filteredImage1 } from '../sampleData';
-import { filterData, saveToLocalStorage } from '../utilities';
-jest.mock('../apiCalls');
-jest.mock('../utilities');
+import { filterData, saveToLocalStorage } from '../utilities/utilities';
+jest.mock('../apiCalls/apiCalls');
+jest.mock('../utilities/utilities');
 
 describe('Discover', () => {
 
