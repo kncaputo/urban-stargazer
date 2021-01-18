@@ -18,6 +18,7 @@ describe('Saved', () => {
   });
 
   beforeEach(async () => {
+    
     await act(async () => { 
       render(
         <Saved />
@@ -25,7 +26,7 @@ describe('Saved', () => {
     });
   });
 
-  it('should render correctly', () => {
+  it('should render correctly and display saved images', () => {
     const img1 = screen.getByAltText('Jets from Unusual Galaxy Centaurus A');
     const img2 = screen.getByAltText('Saturn Rings');
 
