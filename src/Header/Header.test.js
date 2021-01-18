@@ -1,6 +1,5 @@
-// import React from 'react';
 import Header from './index.jsx';
-import { act, render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import { Router } from 'react-router-dom';
