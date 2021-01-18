@@ -1,15 +1,14 @@
 import App from './index.jsx';
-import { act, render, screen, fireEvent } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { fetchPictureFromDate } from '../apiCalls';
-import { image1, image2, filteredImage1, filteredImage2 } from '../sampleData';
-import { filterData, saveToLocalStorage } from '../utilities/utilities';
+import { image1, filteredImage1, filteredImage2 } from '../sampleData';
 jest.mock('../apiCalls');
 
 describe('App', () => {
-  const mockSavedImages = [filteredImage2];
+  const mockSavedImages = [filteredImage1, filteredImage2];
   const mockStringifyedImages = JSON.stringify(mockSavedImages);
 
   Object.defineProperty(window, 'localStorage', {
@@ -47,8 +46,7 @@ describe('App', () => {
     expect(footerLogo).toBeInTheDocument();
   });
 
-  it('should render \'Discover\' component and random photo when user clicks \'Discover\' nav link', async () => {
-    
+  it('should render \'Discover\' component and random photo when user clicks the \'Discover\' nav link', async () => {
     await act(async () => {
       const discover = screen.getByText('Discover');
       userEvent.click(discover);
@@ -57,5 +55,19 @@ describe('App', () => {
     const img = screen.getByAltText('Jets from Unusual Galaxy Centaurus A from 2021-01-17');
 
     expect(img).toBeInTheDocument();
+  });
+
+  it('should render \'Saved\' component and saved photo cards when user clicks the \'Saved\' nav link', async () => {
+    
+    await act(async () => {
+      const saved = screen.getByText('Saved');
+      userEvent.click(saved);
+    });
+
+    const img = screen.getByAltText('Jets from Unusual Galaxy Centaurus A');
+    const img2 = screen.getByAltText('Saturn Rings');
+
+    expect(img).toBeInTheDocument();
+    expect(img2).toBeInTheDocument();
   });
 });
