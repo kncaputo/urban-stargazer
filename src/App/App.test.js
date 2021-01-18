@@ -1,15 +1,27 @@
 import App from './index.jsx';
 import { act, render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { fetchPictureFromDate } from '../apiCalls';
-import { image1, image2 } from '../sampleData';
+import { image1, image2, filteredImage1, filteredImage2 } from '../sampleData';
 import { filterData, saveToLocalStorage } from '../utilities/utilities';
 jest.mock('../apiCalls');
 
 describe('App', () => {
+  const mockSavedImages = [filteredImage2];
+  const mockStringifyedImages = JSON.stringify(mockSavedImages);
+
+  Object.defineProperty(window, 'localStorage', {
+    value: {
+      getItem: (() => mockStringifyedImages),
+    },
+    writable: true
+  });
 
   beforeEach(() => {
+    fetchPictureFromDate.mockResolvedValueOnce(image1)
+
     render(
       <MemoryRouter>
         <App />
@@ -35,9 +47,15 @@ describe('App', () => {
     expect(footerLogo).toBeInTheDocument();
   });
 
-  it('should render \'Discover\' component and random photo when user clicks \'Discover\' nav link', () => {
-    const discover = screen.getByText('Discover');
-
+  it('should render \'Discover\' component and random photo when user clicks \'Discover\' nav link', async () => {
     
-  })
+    await act(async () => {
+      const discover = screen.getByText('Discover');
+      userEvent.click(discover);
+    });
+
+    const img = screen.getByAltText('Jets from Unusual Galaxy Centaurus A from 2021-01-17');
+
+    expect(img).toBeInTheDocument();
+  });
 });
