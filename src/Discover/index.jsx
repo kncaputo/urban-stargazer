@@ -106,10 +106,10 @@ const Discover = () => {
 
         <section id='button-box'>
           {isSaved === false ? 
-            <BsStar className='media-icons' onClick={() => {handleToggleSave()}} alt='Save image' data-testid='save-icon'/> :
-            <BsFillStarFill className='media-icons' onClick={() => {handleToggleSave()}} alt='Remove from Saved' />
+            <BsStar className='media-icons icon' size={27} onClick={() => {handleToggleSave()}} alt='Save image' data-testid='save-icon'/> :
+            <BsFillStarFill className='media-icons icon' size={27} onClick={() => {handleToggleSave()}} alt='Remove from Saved' />
           }
-          <button className='media-icons' onClick={() => {handleDiscoverClick()}} data-testid='discover-again'>Discover Again</button>
+          <button className='media-icons' id='discover-button' onClick={() => {handleDiscoverClick()}} data-testid='discover-again'>Discover Again</button>
         </section>
 
         <section className='explanation-box'>

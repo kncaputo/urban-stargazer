@@ -13,14 +13,18 @@
   max-width: 90vw;
 }
 
-button {
-  // padding: 1em;
-  // margin: 2em .5em 1em .5em;
+#discover-button {
+  @include button;
+}
+
+#discover-button:hover {
+  @include button-hover;
 }
 
 .media-icons {
   margin: .5em;
 }
+
 .media-icons:hover {
   cursor: pointer;
 }
@@ -29,10 +33,6 @@ button {
   display: flex;
   flex-direction: flex-end;
 }
-
-// #email-share-button {
-//   color: white;
-// }
 
 #image-title {
   margin-top: .15em;

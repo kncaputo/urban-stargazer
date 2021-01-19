@@ -8,3 +8,13 @@
   display: flex;
   justify-content: space-between;
 }
+
+@mixin button {
+  border: none;
+  padding: .4em;
+  border-radius: 5px;
+}
+
+@mixin button-hover {
+  background-color: darkgray;
+}

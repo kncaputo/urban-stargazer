@@ -13,8 +13,20 @@ const SavedModal = (props) => {
       <section id='saved-modal-box'>
 
         <section id='modal-button-box'>
-          <BsFillStarFill className='modal-icon' alt='Remove from Saved' data-testid='remove-saved' onClick={() => props.deleteSavedImage(date)}/>
-          <AiOutlineClose className='modal-icon' alt='Close modal' data-testid='close-saved-modal' onClick={() => props.closeModal()}/>
+          <BsFillStarFill 
+            className='modal-icon' 
+            alt='Remove from Saved' 
+            size={27}
+            data-testid='remove-saved' 
+            onClick={() => props.deleteSavedImage(date)}
+          />
+          <AiOutlineClose 
+            className='modal-icon' 
+            alt='Close modal' 
+            size={27}
+            data-testid='close-saved-modal' 
+            onClick={() => props.closeModal()}
+          />
         </section>
 
         <section>
