@@ -96,10 +96,6 @@ const Discover = () => {
     setIsSaved(false);
   }
 
-  const generateLink = () => {
-
-  }
-
   return(
     <IconContext.Provider value={{ color: 'white' }}>
       <main id='discover-main'>
