@@ -46,12 +46,14 @@
   padding: .5em 1.5em 1.5em 1.5em;
 }
 
-.ReactModal__Content--after-open {
-  max-width: 70vw;
-  border: none;
-  padding: 2px;
-}  
+@media only screen and (max-width: 600px) {
+  #modal-image {
+    max-width: 500px;
+  }
+}
 
-.ReactModal__Content {
-  padding: 2px;
+@media only screen and (max-width: 400px) {
+  #modal-image {
+    max-width: 250px;
+  }
 }

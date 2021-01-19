@@ -6,7 +6,8 @@ export const modalStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    padding: '2px'
+    padding: '2px',
+    maxWidth: '80vw'
   },
   overlay: {
     backgroundColor: 'rgb(0 0 0/75%)',
