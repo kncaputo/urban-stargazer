@@ -9,7 +9,7 @@ const Header = () => {
         className='nav-link' 
         id='page-title-link'
       >
-        <h1>Urban Stargazer</h1>
+        <h1 id='page-title'>Urban Stargazer</h1>
       </Link>
 
       <nav>

@@ -12,7 +12,7 @@ header {
   text-decoration: none;
 }
 
-h1 {
+#page-title {
   color: $header-font;
   margin: 1.5em 0 1.5em 0;
 }
@@ -24,7 +24,6 @@ nav {
 .nav-link {
   text-decoration: none;
   margin: 0 1em;
-  
 }
 
 .nav-active {
@@ -34,4 +33,22 @@ nav {
 h2 { 
   color: $header-font;
   margin-top: 2em;
+}
+
+@media only screen and (max-width: 400px) {
+   #page-title {
+    color: $header-font;
+    font-size: large;
+    margin: 1.5em 0 1em 0;
+  }
+
+  .nav-link {
+    text-decoration: none;
+    // margin: 0 1em;
+  }
+
+  h2 { 
+    font-size: medium;
+    margin-top: 1.7em;
+  }
 }
