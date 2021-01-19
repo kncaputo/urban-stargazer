@@ -45,3 +45,13 @@
   font-size: x-small;
   padding: .5em 1.5em 1.5em 1.5em;
 }
+
+.ReactModal__Content--after-open {
+  max-width: 70vw;
+  border: none;
+  padding: 2px;
+}  
+
+.ReactModal__Content {
+  padding: 2px;
+}
