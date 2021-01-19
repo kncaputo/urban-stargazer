@@ -13,26 +13,12 @@ const Discover = () => {
 
   useEffect(() => {
     generateRandomImage();
-    checkSavedForImage();
   }, []);
-
-  const checkSavedForImage = () => {
-    const savedImages = retrieveFromLocalStorage();
-    if (savedImages) {
-      const alreadySaved = savedImages.find(savedImage => {
-        return savedImage.date === image.date;
-      })
-      if (alreadySaved) {
-        setIsSaved(true);
-      } 
-    } else {
-      setIsSaved(false);
-    }
-  }
 
   const generateRandomImage = () => {
     const date = generateRandomDate();
 
+    setIsSaved(false);
     fetchPictureFromDate(date)
     .then(data => {
       const image = filterData(data);

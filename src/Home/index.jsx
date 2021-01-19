@@ -13,11 +13,11 @@ const Home = () => {
         <section className='aside'></section>
         <section className='center'>
           <p className='center-text' data-testid='home-text'>
-            Humans have stared at the starry sky and contemplated the cosmos for millennia. 
-            It is an essential part of human nature. 
-            But with 80% of the world's population now living under a light polluted sky (darksky.org), 
-            and with increasing numbers of satellites being put into orbit for telecommunications, 
-            our night sky is dramatically changing.
+          Humans have stared at the starry sky and contemplated the cosmos for millennia. 
+          It's an inextricable part of human nature. But with 80% of the world's population 
+          now living under a light polluted sky (darksky.org), and with increasing numbers 
+          of satellites being put into orbit for telecommunications, our night sky is 
+          dramatically changing. 
           </p>
         </section>
         <section className='aside'></section>
