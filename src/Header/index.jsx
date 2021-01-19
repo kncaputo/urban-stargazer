@@ -3,7 +3,7 @@ import './Header.scss';
 
 const Header = () => {
   return(
-    <header>
+    <header id='page-header'>
       <Link 
         to='/home' 
         className='nav-link' 

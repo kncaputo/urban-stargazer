@@ -1,11 +1,11 @@
 @import 'src/sass/_mixins.scss';
 @import 'src/sass/_variables.scss';
 
-header {
+#page-header {
   @include space-between;
   width: 100%;
+  margin-bottom: 20px;
 }
-
 
 #page-title-link {
   margin-left: 1em;
