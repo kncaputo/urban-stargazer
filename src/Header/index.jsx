@@ -13,10 +13,18 @@ const Header = () => {
       </Link>
 
       <nav>
-        <NavLink to='/discover' className='nav-link' activeClassName='nav-active'>
+        <NavLink 
+          to='/discover' 
+          className='nav-link' 
+          activeClassName='nav-active'
+        >
           <h2>Discover</h2>
         </NavLink>
-        <NavLink to='/saved' className='nav-link'>
+        <NavLink 
+          to='/saved' 
+          className='nav-link' 
+          activeClassName='nav-active'
+        >
           <h2>Saved</h2>
         </NavLink>
       </nav>
