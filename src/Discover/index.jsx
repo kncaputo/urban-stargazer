@@ -18,11 +18,13 @@ const Discover = () => {
 
   const checkSavedForImage = () => {
     const savedImages = retrieveFromLocalStorage();
-    const alreadySaved = savedImages.find(savedImage => {
-      return savedImage.date === image.date;
-    })
-    if (alreadySaved) {
-      setIsSaved(true);
+    if (savedImages) {
+      const alreadySaved = savedImages.find(savedImage => {
+        return savedImage.date === image.date;
+      })
+      if (alreadySaved) {
+        setIsSaved(true);
+      } 
     } else {
       setIsSaved(false);
     }
