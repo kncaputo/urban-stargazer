@@ -31,4 +31,9 @@
 
 #explore-cosmos-button {
   margin-bottom: 4em;
+  @include button;
+}
+
+#explore-cosmos-button:hover {
+  @include button-hover;
 }

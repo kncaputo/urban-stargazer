@@ -11,6 +11,12 @@ describe('Home', () => {
       </MemoryRouter>  
     );
     
-    expect().toBeInTheDocument();
+    const homeText = screen.getByTestId('home-text');
+    const homeTitle = screen.getByTestId('home-title');
+    const button = screen.getByText('Click to explore the cosmos');
+
+    expect(homeText).toBeInTheDocument();
+    expect(homeTitle).toBeInTheDocument();
+    expect(button).toBeInTheDocument();
   });
 });

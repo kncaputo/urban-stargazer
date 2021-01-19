@@ -3,34 +3,19 @@ import Card from '../Card';
 import { saveToLocalStorage } from '../utilities/utilities';
 import Modal from 'react-modal';
 import './Saved.scss';
+import { modalStyles } from './modalStyles';
 import SavedModal from '../SavedModal';
 
-// Modal.setAppElement('')
-
-const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
-  },
-  overlay: {
-    backgroundColor: 'rgb(0 0 0/75%)',
-  }
- 
-};
-
-const Saved = (props) => {
+const Saved = () => {
   const [savedImages, setSavedImages] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [displayImage, setDisplayImage] = useState({});
 
   useEffect(() => {
-    const retrievedImages = localStorage.getItem('savedImages')
-    let images = JSON.parse(retrievedImages)
-    setSavedImages(images)
+    const retrievedImages = localStorage.getItem('savedImages');
+    let images = JSON.parse(retrievedImages);
+    setSavedImages(images);
+    Modal.setAppElement('body');
   }, [])
 
   const openModal = (date) => {
@@ -39,10 +24,6 @@ const Saved = (props) => {
     })
     setDisplayImage(displayImage);
     setIsOpen(true);
-  }
-
-  const afterOpenModal = () => {
-
   }
 
   const closeModal = () => {
@@ -81,9 +62,8 @@ const Saved = (props) => {
       {createCards()}
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
-        style={customStyles}
+        style={modalStyles}
         contentLabel="Example Modal"
       >
         <SavedModal

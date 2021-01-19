@@ -45,3 +45,15 @@
   font-size: x-small;
   padding: .5em 1.5em 1.5em 1.5em;
 }
+
+@media only screen and (max-width: 600px) {
+  #modal-image {
+    max-width: 500px;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  #modal-image {
+    max-width: 250px;
+  }
+}

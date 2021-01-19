@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useParams } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchPictureFromDate } from '../apiCalls';
-import { BsStar, BsFillStarFill, BsLink45Deg } from 'react-icons/bs';
+import { BsStar, BsFillStarFill } from 'react-icons/bs';
 import { IconContext } from 'react-icons/lib';
 import { saveToLocalStorage, filterData } from '../utilities/utilities';
 import './Discover.scss';
@@ -9,28 +9,16 @@ const Discover = () => {
   const [image, setImage] = useState({});
   const [isSaved, setIsSaved] = useState(false);
 
-  const { title, url, explanation, date } = image;
+  const { title, url, date } = image;
 
   useEffect(() => {
     generateRandomImage();
-    checkSavedForImage();
   }, []);
-
-  const checkSavedForImage = () => {
-    const savedImages = retrieveFromLocalStorage();
-    const alreadySaved = savedImages.find(savedImage => {
-      return savedImage.date === image.date;
-    })
-    if (alreadySaved) {
-      setIsSaved(true);
-    } else {
-      setIsSaved(false);
-    }
-  }
 
   const generateRandomImage = () => {
     const date = generateRandomDate();
 
+    setIsSaved(false);
     fetchPictureFromDate(date)
     .then(data => {
       const image = filterData(data);
@@ -47,7 +35,6 @@ const Discover = () => {
     return `${year}-${month}-${day}`;
   }
 
-  // date function
   const getRandomValue = (multiple) => {
     let value = Math.floor((Math.random() *  multiple) + 1)
     value = value.toString();
@@ -96,10 +83,6 @@ const Discover = () => {
     setIsSaved(false);
   }
 
-  const generateLink = () => {
-
-  }
-
   return(
     <IconContext.Provider value={{ color: 'white' }}>
       <main id='discover-main'>
@@ -110,12 +93,11 @@ const Discover = () => {
         <h2 id='image-title'>{`${image.title}`}</h2>
 
         <section id='button-box'>
-          <BsLink45Deg className='media-icons' onClick={() => {generateLink()}} alt='Get link' data-testid='link-icon' />
           {isSaved === false ? 
-            <BsStar className='media-icons' onClick={() => {handleToggleSave()}} alt='Save image' data-testid='save-icon'/> :
-            <BsFillStarFill className='media-icons' onClick={() => {handleToggleSave()}} alt='Remove from Saved' />
+            <BsStar className='media-icons icon' size={27} onClick={() => {handleToggleSave()}} alt='Save image' data-testid='save-icon'/> :
+            <BsFillStarFill className='media-icons icon' size={27} onClick={() => {handleToggleSave()}} alt='Remove from Saved' />
           }
-          <button className='media-icons' onClick={() => {handleDiscoverClick()}} data-testid='discover-again'>Discover Again</button>
+          <button className='media-icons' id='discover-button' onClick={() => {handleDiscoverClick()}} data-testid='discover-again'>Discover Again</button>
         </section>
 
         <section className='explanation-box'>

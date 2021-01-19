@@ -1,24 +1,20 @@
 @import 'src/sass/_mixins.scss';
 @import 'src/sass/_variables.scss';
-// header {
-//   display: flex;
-//   align-items: space-between;
-// }
 
-header {
+#page-header {
   @include space-between;
   width: 100%;
+  margin-bottom: 20px;
 }
-
 
 #page-title-link {
   margin-left: 1em;
   text-decoration: none;
 }
 
-h1 {
+#page-title {
   color: $header-font;
-  margin: 1.5em 0 1.5em 0;
+  margin: 1.5em 0 .55em 0;
 }
 
 nav {
@@ -28,10 +24,29 @@ nav {
 .nav-link {
   text-decoration: none;
   margin: 0 1em;
-  
+}
+
+.nav-active {
+  background-color: $nav-accent;
 }
 
 h2 { 
   color: $header-font;
   margin-top: 2em;
+}
+
+@media only screen and (max-width: 414px) {
+   #page-title {
+    color: $header-font;
+    font-size: large;
+  }
+
+  .nav-link {
+    text-decoration: none;
+  }
+
+  h2 { 
+    font-size: medium;
+    margin-top: 1.7em;
+  }
 }
