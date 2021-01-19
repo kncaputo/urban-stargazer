@@ -8,7 +8,6 @@ import nasaLogo from '../assets/NASA_Worm_logo.png';
 import './App.scss';
 
 const App = () => {
-
   return(
     <main id='app-main'>
       <Header />
