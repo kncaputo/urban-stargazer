@@ -1,9 +1,5 @@
 @import 'src/sass/_mixins.scss';
 @import 'src/sass/_variables.scss';
-// header {
-//   display: flex;
-//   align-items: space-between;
-// }
 
 header {
   @include space-between;
@@ -29,6 +25,10 @@ nav {
   text-decoration: none;
   margin: 0 1em;
   
+}
+
+.nav-active {
+  background-color: $nav-accent;
 }
 
 h2 { 

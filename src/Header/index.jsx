@@ -4,14 +4,18 @@ import './Header.scss';
 const Header = () => {
   return(
     <header>
-      <Link to='/home' className='nav-link' id='page-title-link'>
+      <Link 
+        to='/home' 
+        className='nav-link' 
+        id='page-title-link'
+      >
         <h1>Urban Stargazer</h1>
       </Link>
 
       <nav>
-        <Link to='/discover' className='nav-link'>
+        <NavLink to='/discover' className='nav-link' activeClassName='nav-active'>
           <h2>Discover</h2>
-        </Link>
+        </NavLink>
         <NavLink to='/saved' className='nav-link'>
           <h2>Saved</h2>
         </NavLink>
