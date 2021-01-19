@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useParams } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchPictureFromDate } from '../apiCalls';
 import { BsStar, BsFillStarFill } from 'react-icons/bs';
 import { IconContext } from 'react-icons/lib';
@@ -9,7 +9,7 @@ const Discover = () => {
   const [image, setImage] = useState({});
   const [isSaved, setIsSaved] = useState(false);
 
-  const { title, url, explanation, date } = image;
+  const { title, url, date } = image;
 
   useEffect(() => {
     generateRandomImage();
@@ -47,7 +47,6 @@ const Discover = () => {
     return `${year}-${month}-${day}`;
   }
 
-  // date function
   const getRandomValue = (multiple) => {
     let value = Math.floor((Math.random() *  multiple) + 1)
     value = value.toString();
