@@ -14,7 +14,7 @@ header {
 
 #page-title {
   color: $header-font;
-  margin: 1.5em 0 1.5em 0;
+  margin: 1.5em 0 .55em 0;
 }
 
 nav {
@@ -39,12 +39,10 @@ h2 {
    #page-title {
     color: $header-font;
     font-size: large;
-    margin: 1.5em 0 1em 0;
   }
 
   .nav-link {
     text-decoration: none;
-    // margin: 0 1em;
   }
 
   h2 { 
