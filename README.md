@@ -20,13 +20,21 @@ This was a final project for Module 3 at the Turing School of Software and Desig
 
 Download Instructions
 
-- Clone the repo - git@github.com:kncaputo/urban-stargazer.git
+- Clone the repo - (git@github.com:kncaputo/urban-stargazer.git)
 - Install NPM packages - npm install
 - Start the application - npm start
 
 To view the test suite:
 
 - Run npm test in your terminal
+
+## Usage
+
+### In Action
+
+![Browser View](./src/assets/browser-view.gif)<br />
+
+![Mobile View](./src/assets/mobile-view.gif)<br />
 
 ## Project Wins
 
