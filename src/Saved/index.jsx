@@ -62,7 +62,6 @@ const Saved = () => {
       {createCards()}
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={modalStyles}
         contentLabel="Example Modal"
