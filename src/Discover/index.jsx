@@ -5,7 +5,7 @@ import { IconContext } from 'react-icons/lib';
 import { saveToLocalStorage, filterData } from '../utilities/utilities';
 import './Discover.scss';
 
-const Discover = (props) => {
+const Discover = () => {
   const [image, setImage] = useState({});
   const [isSaved, setIsSaved] = useState(false);
 

@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Card.scss';
 
-const Card = (props) => {
-  const { src, title, date, openModal } = props;
+const Card = ({ src, title, date, openModal }) => {
  
   return (
     <section className='card' data-testid={`card-${date}`} onClick={() => openModal(date) }>
@@ -12,3 +12,10 @@ const Card = (props) => {
 }
 
 export default Card;
+
+Card.propTypes = {
+  src: PropTypes.string,
+  title: PropTypes.string,
+  date: PropTypes.string,
+  openModal: PropTypes.func
+};
