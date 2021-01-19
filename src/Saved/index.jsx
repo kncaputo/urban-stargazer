@@ -5,8 +5,6 @@ import Modal from 'react-modal';
 import './Saved.scss';
 import SavedModal from '../SavedModal';
 
-// Modal.setAppElement('')
-
 const customStyles = {
   content : {
     top                   : '50%',
@@ -22,15 +20,16 @@ const customStyles = {
  
 };
 
-const Saved = (props) => {
+const Saved = () => {
   const [savedImages, setSavedImages] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [displayImage, setDisplayImage] = useState({});
 
   useEffect(() => {
-    const retrievedImages = localStorage.getItem('savedImages')
-    let images = JSON.parse(retrievedImages)
-    setSavedImages(images)
+    const retrievedImages = localStorage.getItem('savedImages');
+    let images = JSON.parse(retrievedImages);
+    setSavedImages(images);
+    Modal.setAppElement('body');
   }, [])
 
   const openModal = (date) => {
