@@ -6,7 +6,7 @@ import './Home.scss'
 const Home = () => {
 
   return (
-    <main className='home-main' style={{backgroundImage: `url(${background})`}}>
+    <main data-testid='home' className='home-main' style={{backgroundImage: `url(${background})`}}>
       <h1 id='home-title'>Welcome to Urban Stargazer</h1>
 
       <section className='box'>

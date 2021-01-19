@@ -8,8 +8,8 @@ export const fetchPicturePicturesFromRange = (startDate, endDate) => {
       throw Error
     } 
     return response.json()
-  })
-}
+  });
+};
 
 export const fetchPictureFromDate = (date) => {
   return fetch(`${endpoint}?api_key=${NASA_API_KEY}&date=${date}`)
@@ -18,5 +18,5 @@ export const fetchPictureFromDate = (date) => {
       throw Error
     } 
     return response.json()
-  })
-}
+  });
+};
