@@ -1,9 +1,12 @@
+@import '../sass/mixins';
+
 .home-main {
-  // background-image: url('../assets/hubble-stars.jpg') !important;
-  // background-size: contain;
-  // background-position: top;
-  // background: cover;
-  // width: 100%;
+  @include center-column;
+}
+
+#home-title {
+  text-align: center;
+  margin: 1.5em 0 1em 0;
 }
 
 .box {
@@ -12,10 +15,20 @@
 }
 
 .aside {
-  flex-grow: 3;
+  flex-grow: 1;
 }
 
 .center {
-  flex-grow: 1;
-  max-width: 20em;
+  padding: 1em 1.5em 3em 1.5em;
+  flex-grow: 3;
+  max-width: 30em;
+  background: radial-gradient(#000000eb, #00000000);
+}
+
+.center-text {
+  text-align: center;
+}
+
+#explore-cosmos-button {
+  margin-bottom: 4em;
 }
