@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useParams } from 'react';
 import { fetchPictureFromDate } from '../apiCalls';
-import { BsStar, BsFillStarFill, BsLink45Deg } from 'react-icons/bs';
+import { BsStar, BsFillStarFill } from 'react-icons/bs';
 import { IconContext } from 'react-icons/lib';
 import { saveToLocalStorage, filterData } from '../utilities/utilities';
 import './Discover.scss';
@@ -110,7 +110,6 @@ const Discover = () => {
         <h2 id='image-title'>{`${image.title}`}</h2>
 
         <section id='button-box'>
-          <BsLink45Deg className='media-icons' onClick={() => {generateLink()}} alt='Get link' data-testid='link-icon' />
           {isSaved === false ? 
             <BsStar className='media-icons' onClick={() => {handleToggleSave()}} alt='Save image' data-testid='save-icon'/> :
             <BsFillStarFill className='media-icons' onClick={() => {handleToggleSave()}} alt='Remove from Saved' />
