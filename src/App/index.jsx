@@ -11,7 +11,7 @@ const App = () => {
   return(
     <main id='app-main'>
       <Header />
-      <Route exact path='/home' component={Home} />
+      <Route exact path={['/home', '/']} component={Home} />
       <Route exact path='/discover' component={Discover} /> 
       <Route exact path='/saved' component={Saved} />
       <footer id='footer'>
