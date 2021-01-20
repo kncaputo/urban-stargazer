@@ -3,7 +3,6 @@ import { act, render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { fetchPictureFromDate } from '../apiCalls';
 import { image1, image2, filteredImage1 } from '../sampleData';
-import { filterData, saveToLocalStorage } from '../utilities/utilities';
 jest.mock('../apiCalls');
 
 describe('Discover', () => {

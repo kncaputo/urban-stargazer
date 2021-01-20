@@ -1,8 +1,8 @@
 import SavedModal from './index.jsx';
-import { act, render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
-import { filteredImage1, filteredImage2 } from '../sampleData';
+import { filteredImage1 } from '../sampleData';
 
 describe('SavedModal', () => {
   let mockCloseModal;
