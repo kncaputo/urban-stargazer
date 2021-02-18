@@ -14,6 +14,7 @@ This was a final project for Module 3 at the Turing School of Software and Desig
 - Hooks
 - React Router
 - Jest
+- Travis CI
 - Sass
 
 ## Installation
@@ -45,6 +46,7 @@ To view the test suite:
 ## Links
 
 - [Repo Link](https://github.com/kncaputo/urban-stargazer)
+- [Deployed Site](https://urban-stargazer.herokuapp.com/)
 
 ## Contact 
 
