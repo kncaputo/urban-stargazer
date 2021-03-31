@@ -6,7 +6,9 @@
 
 80% of the world is now living under a light polluted sky. Urban Skygazer is an application that brings the extraordinary wonders of space to users. Utilizing NASA's Astronomy Photo of the Day API, users are able to explore incredile space photos and details and save images. 
 
-This was a final project for Module 3 at the Turing School of Software and Design to be completed in one week. The learning goals of this project included demonstrating fundamental concepts of React including architecting a React application from scratch and utitilizing React Router for path transitions and displays. As a personal stretch goal, I also chose to implement React Hooks for the first time on this project. Unit and integration testing was also implemented for each component utilizing the Jest testing suite. 
+This was a final project for Module 3 at the Turing School of Software and Design to be completed in one week. The goals of this project included demonstrating fundamental concepts of React, including architecting a React application from scratch and utitilizing React Router for path transitions and displays. As a personal stretch goal, I also chose to implement React Hooks for the first time on this project. Unit and integration testing was also implemented for each component utilizing the Jest testing suite. 
+
+- Lighthouse Accessibility Score: 100% browser view & mobile view
 
 ## Tech Used
 
