@@ -29,7 +29,9 @@ button:hover {
   background-color: $background-color;
   @include center-column;
   width: 100%;
-  height: 75px;
+  height: 4.3em;
+  position: absolute;
+  bottom: 0;
 }
 
 #footer>p {
