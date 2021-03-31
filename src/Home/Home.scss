@@ -2,6 +2,9 @@
 
 .home-main {
   @include center-column;
+  height: 70%;
+  min-height: 400px;
+  justify-content: space-around;
 }
 
 #home-title {
