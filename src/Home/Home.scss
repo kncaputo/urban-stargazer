@@ -7,6 +7,10 @@
   justify-content: space-around;
 }
 
+.home-content-wrapper {
+  @include center-column;
+}
+
 #home-title {
   text-align: center;
   margin: 1.5em 0 1em 0;
