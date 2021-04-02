@@ -2,9 +2,8 @@
 
 .home-main {
   @include center-column;
-  height: 75%;
-  min-height: 400px;
   justify-content: space-around;
+  flex-grow: 1;
 }
 
 .home-content-wrapper {

@@ -3,9 +3,11 @@ import './Footer.scss'
 
 const Footer = () => {
   return (
-    <footer id='footer'>
-      <p>Photos brought to you by NASA's Astronomy Picture of the Day archive</p>
-      <img id='logo' src={nasaLogo} alt='NASA logo' />
+    <footer className='footer-wrapper'>
+      <section id='footer'>
+        <p>Photos brought to you by NASA's Astronomy Picture of the Day archive</p>
+        <img id='logo' src={nasaLogo} alt='NASA logo' />
+      </section>
     </footer>
   )
 }

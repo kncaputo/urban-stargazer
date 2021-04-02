@@ -1,8 +1,16 @@
+@import '../sass/variables';
+@import '../sass/mixins';
+
+.footer-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
 #footer {
+  @include center-column;
   border-top: 1px solid #0e0e0e;
   padding: 1.5em 0;
   background-color: $background-color;
-  @include center-column;
   width: 100%;
   height: 4.3em;
 }

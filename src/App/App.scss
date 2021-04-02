@@ -10,6 +10,8 @@ main {
 }
 
 #app-main {
+  display: flex;
+  flex-direction: column;
   background-color: $background-color;
   color: $header-font;
   height: 100vh;
