@@ -2,6 +2,7 @@
 
 #discover-main {
   @include center-column;
+  flex-grow: 1;
 }
 
 #image-box {
