@@ -87,7 +87,7 @@ const Discover = () => {
     <IconContext.Provider value={{ color: 'white' }}>
       <main id='discover-main'>
         <section id='image-box'>
-          <div>
+          <div id='image-wrapper'>
             <img src={`${url}`} id='image' alt={`${title} from ${date}`}/>
           </div>
         </section>
