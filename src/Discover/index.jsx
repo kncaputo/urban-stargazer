@@ -87,21 +87,25 @@ const Discover = () => {
     <IconContext.Provider value={{ color: 'white' }}>
       <main id='discover-main'>
         <section id='image-box'>
-          <img src={`${url}`} id='image' alt={`${title} from ${date}`}/>
+          <div>
+            <img src={`${url}`} id='image' alt={`${title} from ${date}`}/>
+          </div>
         </section>
 
-        <h2 id='image-title'>{`${image.title}`}</h2>
+        <section id='details-box'>
+          <h2 id='image-title'>{`${image.title}`}</h2>
 
-        <section id='button-box'>
-          {isSaved === false ? 
-            <BsStar className='media-icons icon' size={27} onClick={() => {handleToggleSave()}} alt='Save image' data-testid='save-icon'/> :
-            <BsFillStarFill className='media-icons icon' size={27} onClick={() => {handleToggleSave()}} alt='Remove from Saved' />
-          }
-          <button className='media-icons' id='discover-button' onClick={() => {handleDiscoverClick()}} data-testid='discover-again'>Discover Again</button>
-        </section>
+          <section id='button-box'>
+            {isSaved === false ? 
+              <BsStar className='media-icons icon' size={27} onClick={() => {handleToggleSave()}} alt='Save image' data-testid='save-icon'/> :
+              <BsFillStarFill className='media-icons icon' size={27} onClick={() => {handleToggleSave()}} alt='Remove from Saved' />
+            }
+            <button className='media-icons' id='discover-button' onClick={() => {handleDiscoverClick()}} data-testid='discover-again'>Discover Again</button>
+          </section>
 
-        <section className='explanation-box'>
-          <p id='explanation'>{`${image.explanation}`}</p>
+          <section className='explanation-box'>
+            <p id='explanation'>{`${image.explanation}`}</p>
+          </section>
         </section>
       </main>
     </IconContext.Provider>
