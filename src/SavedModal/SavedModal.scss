@@ -49,11 +49,17 @@
 
 @media only screen and (max-width: 600px) {
   #modal-image {
-    max-width: 500px;
+    max-width: 430px;
   }
 }
 
-@media only screen and (max-width: 414px) {
+@media only screen and (max-width: 550px) {
+  #modal-image {
+    max-width: 350px;
+  }
+}
+
+@media only screen and (max-width: 433px) {
   #modal-image {
     max-width: 250px;
   }
