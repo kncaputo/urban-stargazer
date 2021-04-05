@@ -12,7 +12,14 @@ const App = () => {
     <main id='app-main'>
       <Header />
       <Route exact path={['/home', '/']} component={Home} />
-      <Route exact path='/discover' component={Discover} /> 
+      <Route exact path='/discover' component={Discover} />
+      <Route exact path='/discover/:date' 
+        render={({ match }) => {
+          const date = match.params.date
+          return(
+            <Discover dateUrl={date}/>
+          )
+      }} />
       <Route exact path='/saved' component={Saved} />
       <Footer />
     </main>

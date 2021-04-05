@@ -3,11 +3,13 @@ import { fetchPictureFromDate } from '../apiCalls';
 import { BsStar, BsFillStarFill } from 'react-icons/bs';
 import { IconContext } from 'react-icons/lib';
 import { saveToLocalStorage, filterData } from '../utilities/utilities';
+import { useHistory } from 'react-router-dom';
 import './Discover.scss';
 
-const Discover = () => {
+const Discover = ({ dateUrl }) => {
   const [image, setImage] = useState({});
   const [isSaved, setIsSaved] = useState(false);
+  const history = useHistory();
 
   const { title, url, date } = image;
 
@@ -16,13 +18,17 @@ const Discover = () => {
   }, []);
 
   const generateRandomImage = () => {
-    const date = generateRandomDate();
+    !dateUrl ? fetchImage(generateRandomDate()) : fetchImage(dateUrl)
 
     setIsSaved(false);
+  }
+
+  const fetchImage = (date) => {
     fetchPictureFromDate(date)
     .then(data => {
       const image = filterData(data);
       setImage(image);
+      history.push(`/discover/${date}`)
     })
     .catch(error => console.log(error))
   }
@@ -46,7 +52,7 @@ const Discover = () => {
   }
 
   const handleDiscoverClick = () => {
-    generateRandomImage();
+    fetchImage(generateRandomDate())
   }
 
   const retrieveFromLocalStorage = () => {
