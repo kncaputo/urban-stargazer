@@ -2,15 +2,27 @@
 
 #discover-main {
   @include center-column;
+  flex-grow: 1;
 }
 
 #image-box {
   display: flex;
+  flex-grow: 1;
+}
+
+#image-wrapper {
+  display: flex;
+  align-items: center;
 }
 
 #image {
   max-height: 85vh;
   max-width: 90vw;
+}
+
+#details-box {
+  @include center-column;
+  justify-content: flex-end;
 }
 
 #discover-button {
@@ -41,7 +53,7 @@
 
 #explanation {
   font-size: small;
-  margin: .5em 1em 3em 1em;
+  margin: .5em 1em 4em 1em;
   padding: 0 2em;
 }
 

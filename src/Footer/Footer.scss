@@ -1,0 +1,38 @@
+@import '../sass/variables';
+@import '../sass/mixins';
+
+.footer-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#footer {
+  @include center-column;
+  border-top: 1px solid #0e0e0e;
+  padding: 1.5em 0;
+  background-color: $background-color;
+  width: 100%;
+}
+
+#footer>p {
+  flex-wrap: wrap;
+  font-size: small;
+  text-align: center;
+  margin: 10px;
+}
+
+#logo {
+  height: 1.75em;
+  margin: .5em;
+}
+
+@media only screen and (max-width: 414px) {
+  #footer {
+    padding: .75em 0;
+  }
+
+  #logo {
+    height: 1.25em;
+    margin: .5em;
+  }
+}
