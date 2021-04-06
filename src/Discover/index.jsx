@@ -28,21 +28,21 @@ const Discover = ({ dateUrl }) => {
     .then(data => {
       const image = filterData(data);
       setImage(image);
-      history.push(`/discover/${date}`)
+      history.push(`/discover/${date}`);
     })
     .catch(error => console.log(error))
   }
 
   const generateRandomDate = () => {
     const year = `20${getRandomValue(20)}`;
-    const month = `${getRandomValue(12)}`
-    const day = `${getRandomValue(28)}`
+    const month = `${getRandomValue(12)}`;
+    const day = `${getRandomValue(28)}`;
 
     return `${year}-${month}-${day}`;
   }
 
   const getRandomValue = (multiple) => {
-    let value = Math.floor((Math.random() *  multiple) + 1)
+    let value = Math.floor((Math.random() *  multiple) + 1);
     value = value.toString();
 
     if (value.length < 2) {

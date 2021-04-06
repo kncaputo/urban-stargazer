@@ -19,8 +19,10 @@ const App = () => {
           return(
             <Discover dateUrl={date}/>
           )
-      }} />
+        }} 
+      />
       <Route exact path='/saved' component={Saved} />
+      <Route path='/' component={Error} />
       <Footer />
     </main>
   )
