@@ -4,7 +4,6 @@ import { BsStar, BsFillStarFill } from 'react-icons/bs';
 import { IconContext } from 'react-icons/lib';
 import { saveToLocalStorage, filterData } from '../utilities/utilities';
 import { useHistory } from 'react-router-dom';
-import { Switch, Route } from 'react-router-dom';
 import Error from '../Error';
 import './Discover.scss';
 
@@ -92,18 +91,6 @@ const Discover = ({ dateUrl }) => {
     setIsSaved(false);
   }
 
-  const checkErrors = () => {
-    
-  }
-
-  // {
-  //   !error ? 
-  //     <Switch>
-  //       <Route />
-  //     </Switch>
-  //     :
-  //   <Error />
-  // }
   return(
     <>
       {
