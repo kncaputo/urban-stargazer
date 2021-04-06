@@ -1,0 +1,6 @@
+@import 'src/sass/_mixins.scss';
+
+#error-main {
+  @include center-column;
+  flex-grow: 1;
+}

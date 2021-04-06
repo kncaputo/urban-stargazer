@@ -4,11 +4,14 @@ import { BsStar, BsFillStarFill } from 'react-icons/bs';
 import { IconContext } from 'react-icons/lib';
 import { saveToLocalStorage, filterData } from '../utilities/utilities';
 import { useHistory } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
+import Error from '../Error';
 import './Discover.scss';
 
 const Discover = ({ dateUrl }) => {
   const [image, setImage] = useState({});
   const [isSaved, setIsSaved] = useState(false);
+  const [error, setError] = useState(false);
   const history = useHistory();
 
   const { title, url, date } = image;
@@ -30,7 +33,7 @@ const Discover = ({ dateUrl }) => {
       setImage(image);
       history.push(`/discover/${date}`);
     })
-    .catch(error => console.log(error))
+    .catch(error => setError(true))
   }
 
   const generateRandomDate = () => {
@@ -89,32 +92,51 @@ const Discover = ({ dateUrl }) => {
     setIsSaved(false);
   }
 
+  const checkErrors = () => {
+    
+  }
+
+  // {
+  //   !error ? 
+  //     <Switch>
+  //       <Route />
+  //     </Switch>
+  //     :
+  //   <Error />
+  // }
   return(
-    <IconContext.Provider value={{ color: 'white' }}>
-      <main id='discover-main'>
-        <section id='image-box'>
-          <div id='image-wrapper'>
-            <img src={`${url}`} id='image' alt={`${title} from ${date}`}/>
-          </div>
-        </section>
+    <>
+      {
+        !error ? 
+          <IconContext.Provider value={{ color: 'white' }}>
+            <main id='discover-main'>
+              <section id='image-box'>
+                <div id='image-wrapper'>
+                  <img src={`${url}`} id='image' alt={`${title} from ${date}`}/>
+                </div>
+              </section>
 
-        <section id='details-box'>
-          <h2 id='image-title'>{`${image.title}`}</h2>
+              <section id='details-box'>
+                <h2 id='image-title'>{`${image.title}`}</h2>
 
-          <section id='button-box'>
-            {isSaved === false ? 
-              <BsStar className='media-icons icon' size={27} onClick={() => {handleToggleSave()}} alt='Save image' data-testid='save-icon'/> :
-              <BsFillStarFill className='media-icons icon' size={27} onClick={() => {handleToggleSave()}} alt='Remove from Saved' />
-            }
-            <button className='media-icons' id='discover-button' onClick={() => {handleDiscoverClick()}} data-testid='discover-again'>Discover Again</button>
-          </section>
+                <section id='button-box'>
+                  {isSaved === false ? 
+                    <BsStar className='media-icons icon' size={27} onClick={() => {handleToggleSave()}} alt='Save image' data-testid='save-icon'/> :
+                    <BsFillStarFill className='media-icons icon' size={27} onClick={() => {handleToggleSave()}} alt='Remove from Saved' />
+                  }
+                  <button className='media-icons' id='discover-button' onClick={() => {handleDiscoverClick()}} data-testid='discover-again'>Discover Again</button>
+                </section>
 
-          <section className='explanation-box'>
-            <p id='explanation'>{`${image.explanation}`}</p>
-          </section>
-        </section>
-      </main>
-    </IconContext.Provider>
+                <section className='explanation-box'>
+                  <p id='explanation'>{`${image.explanation}`}</p>
+                </section>
+              </section>
+            </main>
+          </IconContext.Provider> 
+          :
+        <Error />        
+      }
+    </>
   ) 
 }
 
