@@ -4,3 +4,8 @@
   @include center-column;
   flex-grow: 1;
 }
+
+#error-text {
+  margin-top: 3em 1em 0 1em;
+  font-size: medium;
+}
