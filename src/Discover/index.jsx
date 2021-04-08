@@ -20,6 +20,7 @@ const Discover = ({ dateUrl }) => {
   }, []);
 
   const generateRandomImage = () => {
+    setError(false);
     compareUrlToTodayDate();
     !dateUrl ? fetchImage(generateRandomDate()) : fetchImage(dateUrl);
 
