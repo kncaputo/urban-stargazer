@@ -1,5 +1,4 @@
 import { NavLink, Link } from 'react-router-dom';
-import { generateRandomDate } from '../utilities/utilities';
 import './Header.scss';
 
 const Header = () => {
