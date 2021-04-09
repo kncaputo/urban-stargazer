@@ -1,4 +1,5 @@
 import { NavLink, Link } from 'react-router-dom';
+import { generateRandomDate } from '../utilities/utilities';
 import './Header.scss';
 
 const Header = () => {
@@ -14,7 +15,7 @@ const Header = () => {
 
       <nav>
         <NavLink 
-          to='/discover' 
+          to={`/discover/${generateRandomDate()}`}
           className='nav-link' 
           activeClassName='nav-active'
         >

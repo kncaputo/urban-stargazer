@@ -4,6 +4,7 @@ import { BsStar, BsFillStarFill } from 'react-icons/bs';
 import { IconContext } from 'react-icons/lib';
 import { saveToLocalStorage, filterData } from '../utilities/utilities';
 import { useHistory } from 'react-router-dom';
+import { generateRandomDate } from '../utilities/utilities';
 import Error from '../Error';
 import './Discover.scss';
 
@@ -11,19 +12,46 @@ const Discover = ({ dateUrl }) => {
   const [image, setImage] = useState({});
   const [isSaved, setIsSaved] = useState(false);
   const [error, setError] = useState(false);
+  const [urlDate, setUrlDate] = useState(null);
   const history = useHistory();
+  console.log('urlDate', urlDate)
 
   const { title, url, date } = image;
 
   useEffect(() => {
+    // if (!urlDate) {
+    //   const randomDate = generateRandomDate();
+    //   fetchImage(randomDate);
+    // }
     generateRandomImage();
   }, []);
+
+  useEffect(() => {
+    if (urlDate) {
+      fetchImage(urlDate)
+    }
+  }, [urlDate])
+
+  // useEffect(() => {
+  //   compareUrlToTodayDate();
+
+  //   fetchImage(dateUrl)
+  // }, [dateUrl]);
 
   const generateRandomImage = () => {
     setError(false);
     compareUrlToTodayDate();
-    !dateUrl ? fetchImage(generateRandomDate()) : fetchImage(dateUrl);
-
+    
+    if (!urlDate) {
+      const randomDate = generateRandomDate();
+      setUrlDate(randomDate)
+      fetchImage(randomDate);
+    } else {
+      setUrlDate(dateUrl);
+      fetchImage(dateUrl);
+    }
+    // !dateUrl ? fetchImage(randomDate) : fetchImage(dateUrl);
+    // dateUrl = randomDate;
     setIsSaved(false);
   }
 
@@ -37,6 +65,7 @@ const Discover = ({ dateUrl }) => {
   }
 
   const fetchImage = (date) => {
+    setUrlDate(date);
     fetchPictureFromDate(date)
     .then(data => {
       const image = filterData(data);
@@ -44,24 +73,6 @@ const Discover = ({ dateUrl }) => {
       history.push(`/discover/${date}`);
     })
     .catch(error => setError(true))
-  }
-
-  const generateRandomDate = () => {
-    const year = `20${getRandomValue(20)}`;
-    const month = `${getRandomValue(12)}`;
-    const day = `${getRandomValue(28)}`;
-
-    return `${year}-${month}-${day}`;
-  }
-
-  const getRandomValue = (multiple) => {
-    let value = Math.floor((Math.random() *  multiple) + 1);
-    value = value.toString();
-
-    if (value.length < 2) {
-      value = '0' + value;
-    }
-    return value;
   }
 
   const handleDiscoverClick = () => {
