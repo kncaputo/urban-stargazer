@@ -12,7 +12,7 @@ const Discover = ({ dateUrl }) => {
   const [image, setImage] = useState({});
   const [isSaved, setIsSaved] = useState(false);
   const [error, setError] = useState(false);
-  const [urlDate, setUrlDate] = useState(null);
+  const [urlDate, setUrlDate] = useState(dateUrl);
   const history = useHistory();
   console.log('urlDate', urlDate)
 
@@ -24,12 +24,16 @@ const Discover = ({ dateUrl }) => {
     //   fetchImage(randomDate);
     // }
     generateRandomImage();
+    history.push(`/discover/${urlDate}`)
   }, []);
 
   useEffect(() => {
-    if (urlDate) {
-      fetchImage(urlDate)
-    }
+    if (dateUrl) {
+      // setError(false);
+      setUrlDate(dateUrl);
+      fetchImage(dateUrl);
+      // history.push(`/discover/${dateUrl}`)
+    } 
   }, [urlDate])
 
   // useEffect(() => {
@@ -39,16 +43,19 @@ const Discover = ({ dateUrl }) => {
   // }, [dateUrl]);
 
   const generateRandomImage = () => {
-    setError(false);
+    // setError(false);
     compareUrlToTodayDate();
-    
-    if (!urlDate) {
+
+    console.log(history.location.pathname)
+    if (history.location.pathname !== '/discover') {
+      setUrlDate(dateUrl);
+      fetchImage(dateUrl);
+      
+    } else {
+      console.log('hello')
       const randomDate = generateRandomDate();
       setUrlDate(randomDate)
       fetchImage(randomDate);
-    } else {
-      setUrlDate(dateUrl);
-      fetchImage(dateUrl);
     }
     // !dateUrl ? fetchImage(randomDate) : fetchImage(dateUrl);
     // dateUrl = randomDate;
@@ -57,17 +64,18 @@ const Discover = ({ dateUrl }) => {
 
   const compareUrlToTodayDate = () => {
     const today = new Date();
-    const urlDate = new Date(dateUrl);
+    const checkDate = new Date(dateUrl);
 
-    if (urlDate > today) {
+    if (checkDate > today) {
       setError(true);
     }
   }
 
   const fetchImage = (date) => {
-    setUrlDate(date);
+    // setUrlDate(date);
     fetchPictureFromDate(date)
     .then(data => {
+      setError(false);
       const image = filterData(data);
       setImage(image);
       history.push(`/discover/${date}`);

@@ -15,7 +15,7 @@ const Header = () => {
 
       <nav>
         <NavLink 
-          to={`/discover/${generateRandomDate()}`}
+          to={`/discover`}
           className='nav-link' 
           activeClassName='nav-active'
         >
