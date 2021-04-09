@@ -14,51 +14,25 @@ const Discover = ({ dateUrl }) => {
   const [error, setError] = useState(false);
   const [urlDate, setUrlDate] = useState(dateUrl);
   const history = useHistory();
-  console.log('urlDate', urlDate)
 
   const { title, url, date } = image;
 
   useEffect(() => {
-    // if (!urlDate) {
-    //   const randomDate = generateRandomDate();
-    //   fetchImage(randomDate);
-    // }
     generateRandomImage();
     history.push(`/discover/${urlDate}`)
   }, []);
 
   useEffect(() => {
     if (dateUrl) {
-      // setError(false);
       setUrlDate(dateUrl);
       fetchImage(dateUrl);
-      // history.push(`/discover/${dateUrl}`)
     } 
   }, [urlDate])
 
-  // useEffect(() => {
-  //   compareUrlToTodayDate();
-
-  //   fetchImage(dateUrl)
-  // }, [dateUrl]);
-
   const generateRandomImage = () => {
-    // setError(false);
     compareUrlToTodayDate();
-
-    console.log(history.location.pathname)
-    if (history.location.pathname !== '/discover') {
-      setUrlDate(dateUrl);
-      fetchImage(dateUrl);
-      
-    } else {
-      console.log('hello')
-      const randomDate = generateRandomDate();
-      setUrlDate(randomDate)
-      fetchImage(randomDate);
-    }
-    // !dateUrl ? fetchImage(randomDate) : fetchImage(dateUrl);
-    // dateUrl = randomDate;
+    setUrlDate(dateUrl);
+    fetchImage(dateUrl);
     setIsSaved(false);
   }
 
@@ -72,7 +46,6 @@ const Discover = ({ dateUrl }) => {
   }
 
   const fetchImage = (date) => {
-    // setUrlDate(date);
     fetchPictureFromDate(date)
     .then(data => {
       setError(false);
