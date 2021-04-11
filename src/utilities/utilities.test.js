@@ -1,4 +1,4 @@
-import { saveToLocalStorage, filterData } from './utilities';
+import { saveToLocalStorage, filterData, generateRandomDate } from './utilities';
 import '@testing-library/jest-dom';
 import { image1, filteredImage1, filteredImage2 } from '../sampleData';
 
@@ -27,5 +27,15 @@ describe('utilities', () => {
     const filteredOutput = filterData(image1);
 
     expect(filteredOutput).toEqual(filteredImage1);
+  });
+
+  it('should generate random date', () => {
+    const randomDate = generateRandomDate();
+
+    expect(typeof randomDate).toBe('string')
+  });
+
+  it('should get random value when given a multiple', () => {
+    
   });
 });
