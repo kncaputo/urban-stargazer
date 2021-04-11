@@ -25,7 +25,7 @@ export const generateRandomDate = () => {
   return `${year}-${month}-${day}`;
 }
 
-const getRandomValue = (multiple) => {
+export const getRandomValue = (multiple) => {
   let value = Math.floor((Math.random() *  multiple) + 1);
   value = value.toString();
 
