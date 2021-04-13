@@ -2,7 +2,8 @@ import App from './index.jsx';
 import { act, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
-import { MemoryRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
 import { fetchPictureFromDate } from '../apiCalls';
 import { image1, filteredImage1, filteredImage2 } from '../sampleData';
 jest.mock('../apiCalls');
@@ -19,12 +20,13 @@ describe('App', () => {
   });
 
   beforeEach(() => {
-    fetchPictureFromDate.mockResolvedValueOnce(image1)
+    const history = createMemoryHistory();
+    fetchPictureFromDate.mockResolvedValue(image1)
 
     render(
-      <MemoryRouter>
+      <Router history={history}>
         <App />
-      </MemoryRouter>  
+      </Router>  
     );
   });
 
@@ -48,10 +50,11 @@ describe('App', () => {
 
   it('should render \'Discover\' component and random photo when user clicks the \'Discover\' nav link', async () => {
     await act(async () => {
-      const discover = screen.getByText('Discover');
-      userEvent.click(discover);
+      const discover = await screen.getByText('Discover');
+      userEvent.click(await screen.getByText('Discover'));
     });
 
+    // screen.debug()
     const img = screen.getByAltText('Jets from Unusual Galaxy Centaurus A from 2021-01-17');
 
     expect(img).toBeInTheDocument();

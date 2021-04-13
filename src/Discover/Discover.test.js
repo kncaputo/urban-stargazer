@@ -1,5 +1,7 @@
 import Discover from './index.jsx';
 import { act, render, screen, fireEvent } from '@testing-library/react';
+import { Router } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
 import '@testing-library/jest-dom';
 import { fetchPictureFromDate } from '../apiCalls';
 import { image1, image2, filteredImage1 } from '../sampleData';
@@ -19,11 +21,14 @@ describe('Discover', () => {
   });
   
   beforeEach(async () => {
-    fetchPictureFromDate.mockResolvedValueOnce(image1);
+    fetchPictureFromDate.mockResolvedValue(image1);
+    const history = createMemoryHistory();
 
     await act(async () => {
       render(
-        <Discover />
+        <Router history={history}>
+          <Discover />
+        </Router>  
       );
     });
   });

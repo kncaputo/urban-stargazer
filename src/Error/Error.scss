@@ -1,0 +1,12 @@
+@import 'src/sass/_mixins.scss';
+
+#error-main {
+  @include center-column;
+  flex-grow: 1;
+}
+
+#error-text {
+  text-align: center;
+  margin: 2.5em 1em 0 1em;
+  font-size: larger;
+}

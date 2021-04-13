@@ -14,7 +14,7 @@ const Header = () => {
 
       <nav>
         <NavLink 
-          to='/discover' 
+          to={`/discover`}
           className='nav-link' 
           activeClassName='nav-active'
         >

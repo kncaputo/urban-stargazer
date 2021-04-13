@@ -3,55 +3,68 @@ import { fetchPictureFromDate } from '../apiCalls';
 import { BsStar, BsFillStarFill } from 'react-icons/bs';
 import { IconContext } from 'react-icons/lib';
 import { saveToLocalStorage, filterData } from '../utilities/utilities';
+import { useHistory } from 'react-router-dom';
+import { generateRandomDate } from '../utilities/utilities';
+import Error from '../Error';
 import './Discover.scss';
 
-const Discover = () => {
+const Discover = ({ dateUrl }) => {
   const [image, setImage] = useState({});
   const [isSaved, setIsSaved] = useState(false);
+  const [error, setError] = useState(false);
+  const [urlDate, setUrlDate] = useState(dateUrl);
+  const history = useHistory();
 
   const { title, url, date } = image;
 
   useEffect(() => {
     generateRandomImage();
+    history.push(`/discover/${urlDate}`);
   }, []);
 
-  const generateRandomImage = () => {
-    const date = generateRandomDate();
+  useEffect(() => {
+    if (dateUrl) {
+      setUrlDate(dateUrl);
+      getNewImage(dateUrl);
+    } 
+  }, [urlDate]);
 
+  const generateRandomImage = () => {
+    compareUrlToTodayDate();
+    setUrlDate(dateUrl);
+    getNewImage(dateUrl);
     setIsSaved(false);
+  }
+
+  const compareUrlToTodayDate = () => {
+    const today = new Date();
+    const checkDate = new Date(dateUrl);
+
+    if (checkDate > today) {
+      setError(true);
+    }
+  }
+
+  const getNewImage = (date) => {
     fetchPictureFromDate(date)
     .then(data => {
       const image = filterData(data);
-      setImage(image);
+      setImage(image)
+      history.push(`/discover/${date}`)
     })
-    .catch(error => console.log(error))
-  }
-
-  const generateRandomDate = () => {
-    const year = `20${getRandomValue(20)}`;
-    const month = `${getRandomValue(12)}`
-    const day = `${getRandomValue(28)}`
-
-    return `${year}-${month}-${day}`;
-  }
-
-  const getRandomValue = (multiple) => {
-    let value = Math.floor((Math.random() *  multiple) + 1)
-    value = value.toString();
-
-    if (value.length < 2) {
-      value = '0' + value;
-    }
-    return value;
+    .then(() => {
+      setError(false)
+    })
+    .catch(error => setError(true));
   }
 
   const handleDiscoverClick = () => {
-    generateRandomImage();
+    getNewImage(generateRandomDate());
   }
 
   const retrieveFromLocalStorage = () => {
-    const retrievedImages = localStorage.getItem('savedImages')
-    return JSON.parse(retrievedImages)
+    const retrievedImages = localStorage.getItem('savedImages');
+    return JSON.parse(retrievedImages);
   }
 
   const handleToggleSave = () => {
@@ -63,9 +76,9 @@ const Discover = () => {
     
     const images = retrieveFromLocalStorage();
     if (images) {
-      imagesToSave.push(images) 
+      imagesToSave.push(images);
     }
-    imagesToSave.push(image)
+    imagesToSave.push(image);
     imagesToSave = imagesToSave.flat();
 
     saveToLocalStorage(imagesToSave);
@@ -84,31 +97,38 @@ const Discover = () => {
   }
 
   return(
-    <IconContext.Provider value={{ color: 'white' }}>
-      <main id='discover-main'>
-        <section id='image-box'>
-          <div id='image-wrapper'>
-            <img src={`${url}`} id='image' alt={`${title} from ${date}`}/>
-          </div>
-        </section>
+    <>
+      {
+        !error ? 
+          <IconContext.Provider value={{ color: 'white' }}>
+            <main id='discover-main'>
+              <section id='image-box'>
+                <div id='image-wrapper'>
+                  <img src={`${url}`} id='image' alt={`${title} from ${date}`}/>
+                </div>
+              </section>
 
-        <section id='details-box'>
-          <h2 id='image-title'>{`${image.title}`}</h2>
+              <section id='details-box'>
+                <h2 id='image-title'>{`${image.title}`}</h2>
 
-          <section id='button-box'>
-            {isSaved === false ? 
-              <BsStar className='media-icons icon' size={27} onClick={() => {handleToggleSave()}} alt='Save image' data-testid='save-icon'/> :
-              <BsFillStarFill className='media-icons icon' size={27} onClick={() => {handleToggleSave()}} alt='Remove from Saved' />
-            }
-            <button className='media-icons' id='discover-button' onClick={() => {handleDiscoverClick()}} data-testid='discover-again'>Discover Again</button>
-          </section>
+                <section id='button-box'>
+                  {isSaved === false ? 
+                    <BsStar className='media-icons icon' size={27} onClick={() => {handleToggleSave()}} alt='Save image' data-testid='save-icon'/> :
+                    <BsFillStarFill className='media-icons icon' size={27} onClick={() => {handleToggleSave()}} alt='Remove from Saved' />
+                  }
+                  <button className='media-icons' id='discover-button' onClick={() => {handleDiscoverClick()}} data-testid='discover-again'>Discover Again</button>
+                </section>
 
-          <section className='explanation-box'>
-            <p id='explanation'>{`${image.explanation}`}</p>
-          </section>
-        </section>
-      </main>
-    </IconContext.Provider>
+                <section className='explanation-box'>
+                  <p id='explanation'>{`${image.explanation}`}</p>
+                </section>
+              </section>
+            </main>
+          </IconContext.Provider> 
+          :
+        <Error />        
+      }
+    </>
   ) 
 }
 
