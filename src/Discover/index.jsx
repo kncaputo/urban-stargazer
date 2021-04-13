@@ -19,7 +19,7 @@ const Discover = ({ dateUrl }) => {
 
   useEffect(() => {
     generateRandomImage();
-    history.push(`/discover/${urlDate}`)
+    history.push(`/discover/${urlDate}`);
   }, []);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const Discover = ({ dateUrl }) => {
       setUrlDate(dateUrl);
       fetchImage(dateUrl);
     } 
-  }, [urlDate])
+  }, [urlDate]);
 
   const generateRandomImage = () => {
     compareUrlToTodayDate();
@@ -48,21 +48,23 @@ const Discover = ({ dateUrl }) => {
   const fetchImage = (date) => {
     fetchPictureFromDate(date)
     .then(data => {
-      setError(false);
       const image = filterData(data);
-      setImage(image);
-      history.push(`/discover/${date}`);
+      setImage(image)
+      history.push(`/discover/${date}`)
     })
-    .catch(error => setError(true))
+    .then(() => {
+      setError(false)
+    })
+    .catch(error => setError(true));
   }
 
   const handleDiscoverClick = () => {
-    fetchImage(generateRandomDate())
+    fetchImage(generateRandomDate());
   }
 
   const retrieveFromLocalStorage = () => {
-    const retrievedImages = localStorage.getItem('savedImages')
-    return JSON.parse(retrievedImages)
+    const retrievedImages = localStorage.getItem('savedImages');
+    return JSON.parse(retrievedImages);
   }
 
   const handleToggleSave = () => {
@@ -74,9 +76,9 @@ const Discover = ({ dateUrl }) => {
     
     const images = retrieveFromLocalStorage();
     if (images) {
-      imagesToSave.push(images) 
+      imagesToSave.push(images);
     }
-    imagesToSave.push(image)
+    imagesToSave.push(image);
     imagesToSave = imagesToSave.flat();
 
     saveToLocalStorage(imagesToSave);
