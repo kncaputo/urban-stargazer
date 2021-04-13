@@ -29,7 +29,7 @@ describe('utilities', () => {
     expect(filteredOutput).toEqual(filteredImage1);
   });
 
-  it('should generate random date', () => {
+  it('should return a string with a random date in the formate 20YY-MM-DD', () => {
     const randomDate = generateRandomDate();
 
     expect(typeof randomDate).toBe('string');

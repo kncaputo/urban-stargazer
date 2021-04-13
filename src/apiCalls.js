@@ -8,5 +8,5 @@ export const fetchPictureFromDate = (date) => {
       throw Error
     } 
     return response.json()
-  });
+  })
 };

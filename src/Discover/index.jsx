@@ -25,14 +25,14 @@ const Discover = ({ dateUrl }) => {
   useEffect(() => {
     if (dateUrl) {
       setUrlDate(dateUrl);
-      fetchImage(dateUrl);
+      getNewImage(dateUrl);
     } 
   }, [urlDate]);
 
   const generateRandomImage = () => {
     compareUrlToTodayDate();
     setUrlDate(dateUrl);
-    fetchImage(dateUrl);
+    getNewImage(dateUrl);
     setIsSaved(false);
   }
 
@@ -45,7 +45,7 @@ const Discover = ({ dateUrl }) => {
     }
   }
 
-  const fetchImage = (date) => {
+  const getNewImage = (date) => {
     fetchPictureFromDate(date)
     .then(data => {
       const image = filterData(data);
@@ -59,7 +59,7 @@ const Discover = ({ dateUrl }) => {
   }
 
   const handleDiscoverClick = () => {
-    fetchImage(generateRandomDate());
+    getNewImage(generateRandomDate());
   }
 
   const retrieveFromLocalStorage = () => {
